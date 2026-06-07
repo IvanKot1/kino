@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинокритик — Новости</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="s.html"><img src="img/logo.png" alt="Логотип Кинокритик"></a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="films.html">Фильмы</a>
+            <a href="news.html">Новости</a>
+            <a href="rating.html">Рейтинг</a>
+            <a href="admin.html">Админ</a>
+        </div>
+        <a class="login-btn" href="profil.html">
+            Профиль
+            <img src="img/user.png" alt="" class="user-icon">
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenuBtn.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <main class="news-page">
+        <h1 class="news-title">Новости</h1>
+        <div class="news-grid">
+            <img class="news-bg" src="img/filmstr.png" alt="" aria-hidden="true">
+
+            <article class="news-card">
+                <a href="news-anora.html">
+                    <img class="news-card-img" src="img/avrora.png" alt="Триумф «Аноры» и российские актеры в Каннах.">
+                    <div class="news-card-caption">Триумф «Аноры» и российские актеры в Каннах.</div>
+                </a>
+            </article>
+
+            <article class="news-card">
+                <img class="news-card-img" src="img/netflix.png" alt="Новая стратегия Netflix">
+                <div class="news-card-caption">Новая стратегия Netflix</div>
+            </article>
+
+            <article class="news-card">
+                <a href="news-gladiator.html">
+                    <img class="news-card-img" src="img/gladiator.png" alt="Возвращение в Гладиаторскую арену">
+                    <div class="news-card-caption">Возвращение в Гладиаторскую арену</div>
+                </a>
+            </article>
+
+            <article class="news-card">
+                <img class="news-card-img" src="img/ai.png" alt="Искусственный интеллект в Голливуде">
+                <div class="news-card-caption">Искусственный интеллект в Голливуде</div>
+            </article>
+
+            <article class="news-card">
+                <img class="news-card-img" src="img/trailer.png" alt="Дени Вильнёв за пределами «Дюны»">
+                <div class="news-card-caption">Дени Вильнёв за пределами «Дюны»</div>
+            </article>
+
+            <article class="news-card">
+                <img class="news-card-img" src="img/man.png" alt="«Носферату» Роберта Эггерса: Визуальное совершенство">
+                <div class="news-card-caption">«Носферату» Роберта Эггерса: Визуальное совершенство</div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Кинокритик">
+        </div>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3 class="footer-title">Разделы</h3>
+                <div class="footer-links">
+                    <a href="films.html">Фильмы</a>
+                    <a href="news.html">Новости</a>
+                    <a href="rating.html">Рейтинг</a>
+                </div>
+            </div>
+             <div class="footer-columnn">
+                <h3 class="footer-title">Политика конфиденциальности</h3>
+                <div class="icons">
+                <a href="#"><img src="img/watsapp.png" alt="WhatsApp"></a>
+                <a href="#"><img src="img/VK.png" alt="VK"></a>
+                <a href="#"><img src="img/tg.png" alt="Telegram"></a>
+                </div>
+            </div>
+            <div class="footer-column footer-socials">
+                
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

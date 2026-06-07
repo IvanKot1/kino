@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинокритик — Возвращение в Гладиаторскую арену</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="s.html"><img src="img/logo.png" alt="Логотип Кинокритик"></a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="films.html">Фильмы</a>
+            <a href="news.html">Новости</a>
+            <a href="rating.html">Рейтинг</a>
+            <a href="admin.html">Админ</a>
+        </div>
+        <a class="login-btn" href="profil.html">
+            Профиль
+            <img src="img/user.png" alt="" class="user-icon">
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenuBtn.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <main class="news-detail-page">
+        <section class="news-detail-hero">
+            <h1 class="news-detail-title">Возвращение в Гладиаторскую арену</h1>
+            <div class="news-detail-gallery news-detail-gallery--three">
+                <img src="img/gladiator.png" alt="Арена древнего Рима" class="news-detail-photo news-detail-photo--arena">
+                <img src="img/gladiator.png" alt="Гладиатор 2 — постер" class="news-detail-photo news-detail-photo--poster">
+                <img src="img/plenka.png" alt="" class="news-detail-icon" aria-hidden="true">
+            </div>
+        </section>
+
+        <section class="news-detail-content">
+            <p>В июле 2024 года Paramount Pictures выпустил первый трейлер фильма «Гладиатор 2: Возвращение в арену» — сиквела знаменитой картины режиссёра Ридли Скотта.</p>
+            <p>События разворачиваются примерно через 20 лет после финала первого фильма. Главный герой — Луциус, который был порабощён и стал гладиатором. Его роль исполняет Пол Мескаль. Педро Паскаль играет римского генерала.</p>
+            <p>Среди новых персонажей «Гладиатор 2»:</p>
+            <ul>
+                <li><strong>Макрин (Макринус)</strong> — богатый торговец оружием, владелец труппы гладиаторов. Его играет Дензел Вашингтон. В прошлом сам бывший гладиатор, Макрин мечтает о восстании против римской власти.</li>
+                <li><strong>Маркус Акация</strong> — римский военачальник, разжалованный и проданный в рабство гладиатором за неповиновение.</li>
+                <li><strong>Каракалла и Гета</strong> — главные антагонисты фильма. Братья правили Римом вместе, но Каракалла убил Гету и стал единственным императором.</li>
+            </ul>
+        </section>
+
+        <img src="img/plenka.png" alt="" class="news-detail-filmstrip" aria-hidden="true">
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Кинокритик">
+        </div>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3 class="footer-title">Разделы</h3>
+                <div class="footer-links">
+                    <a href="films.html">Фильмы</a>
+                    <a href="news.html">Новости</a>
+                    <a href="rating.html">Рейтинг</a>
+                </div>
+            </div>
+            <div class="footer-columnn">
+                <h3 class="footer-title">Политика конфиденциальности</h3>
+                <div class="icons">
+                    <a href="#"><img src="img/watsapp.png" alt="WhatsApp"></a>
+                    <a href="#"><img src="img/VK.png" alt="VK"></a>
+                    <a href="#"><img src="img/tg.png" alt="Telegram"></a>
+                </div>
+            </div>
+            <div class="footer-column footer-socials"></div>
+        </div>
+    </footer>
+</body>
+</html>

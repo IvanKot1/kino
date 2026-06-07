@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинокритик — Профиль</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="s.html"><img src="img/logo.png" alt="Логотип Кинокритик"></a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="films.html">Фильмы</a>
+            <a href="news.html">Новости</a>
+            <a href="rating.html">Рейтинг</a>
+            <a href="admin.html">Админ</a>
+        </div>
+        <a class="login-btn" href="profil.html">
+            Профиль
+            <img src="img/user.png" alt="" class="user-icon">
+        </a>
+    </nav>
+
+    <script>
+        // Мобильное меню
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenuBtn.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <main class="profile-page">
+        
+
+        <section class="profile-top">
+            <div class="profile-avatar-block">
+                <div class="profile-avatar">
+                    <img id="avatarImg" src="" alt="Аватар" />
+                </div>
+            </div>
+
+            <div class="profile-info">
+                <div class="profile-info-grid">
+                    <div class="profile-info-item">
+                        <div class="profile-info-label">Имя</div>
+                        <div class="profile-info-value" id="viewName">Олег</div>
+                    </div>
+                    <div class="profile-info-item">
+                        <div class="profile-info-label">Пол</div>
+                        <div class="profile-info-value" id="viewGender">Мужской</div>
+                    </div>
+                    <div class="profile-info-item">
+                        <div class="profile-info-label">Дата рождения</div>
+                        <div class="profile-info-value" id="viewBirth">20.02.2002</div>
+                    </div>
+                    <div class="profile-info-item">
+                        <div class="profile-info-label">Почта</div>
+                        <div class="profile-info-value" id="viewEmail">Olegcoffi.mail.ru</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-actions">
+                <a class="profile-action" href="settings.html">
+                    Настройки
+                    <img src="img/she.png" alt="" class="profile-action-icon">
+                </a>
+                <a class="profile-action" href="myrating.html">
+                    Мой рейтинг
+                    <img src="img/icon_star.png" alt="" class="profile-action-icon">
+                </a>
+                <a class="profile-action" href="chat.html">
+                    Чат
+                    <img src="img/icon_chat.png" alt="" class="profile-action-icon">
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="profile-panel-title">Избранное</h2>
+            <div id="favoritesGrid" class="profile-favorites-grid"></div>
+            <p id="favoritesEmpty" class="profile-empty" hidden>Пока нет избранных фильмов.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Кинокритик">
+        </div>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3 class="footer-title">Разделы</h3>
+                <div class="footer-links">
+                    <a href="films.html">Фильмы</a>
+                    <a href="news.html">Новости</a>
+                    <a href="rating.html">Рейтинг</a>
+                </div>
+            </div>
+             <div class="footer-columnn">
+                <h3 class="footer-title">Политика конфиденциальности</h3>
+                <div class="icons">
+                <a href="#"><img src="img/watsapp.png" alt="WhatsApp"></a>
+                <a href="#"><img src="img/VK.png" alt="VK"></a>
+                <a href="#"><img src="img/tg.png" alt="Telegram"></a>
+                </div>
+            </div>
+            <div class="footer-column footer-socials">
+                
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const MOVIES = [
+            { id: "bigmom", title: "Дом большой мамочки", rating: "5", poster: "img/img1.png" },
+            { id: "avatar", title: "Аватар", rating: "5", poster: "img/avatar.png" },
+            { id: "borderlands", title: "Бордерлендс", rating: "4,9", poster: "img/img3.png" },
+            { id: "sissy", title: "Сисси", rating: "4,9", poster: "img/img4.png" },
+            { id: "married", title: "Женатый холостяк", rating: "4,9", poster: "img/img5.png" },
+            { id: "slave12", title: "12 лет рабства", rating: "4,9", poster: "img/img2.png" },
+            { id: "luck", title: "Удачи, Чак!", rating: "3,5", poster: "img/luck.png" },
+            { id: "wave5", title: "5-я волна", rating: "2,1", poster: "img/five.png" },
+            { id: "whiterosy", title: "Белые росы", rating: "5", poster: "img/white.png" },
+            { id: "papillon", title: "Мотылёк", rating: "4,3", poster: "img/motolok.png" }
+        ];
+
+        function getFavorites() {
+            const raw = localStorage.getItem("favorites");
+            return raw ? JSON.parse(raw) : [];
+        }
+
+        function getProfile() {
+            const raw = localStorage.getItem("profile");
+            return raw ? JSON.parse(raw) : {};
+        }
+
+        function makeMovieCard(movie) {
+            const el = document.createElement("a");
+            el.className = "profile-movie";
+            el.href = `movie.html?id=${encodeURIComponent(movie.id)}`;
+            el.innerHTML = `
+                <img class="profile-movie-poster" src="${movie.poster}" alt="${movie.title}">
+                <div class="profile-movie-title">${movie.title}</div>
+                <div class="profile-movie-rating">${movie.rating} ☆</div>
+            `;
+            return el;
+        }
+
+        function renderFavorites() {
+            const favorites = getFavorites();
+            const favMovies = MOVIES.filter(m => favorites.includes(m.id));
+
+            const grid1 = document.getElementById("favoritesGrid");
+            const empty1 = document.getElementById("favoritesEmpty");
+
+            grid1.innerHTML = "";
+
+            if (favMovies.length === 0) {
+                empty1.hidden = false;
+                return;
+            }
+
+            empty1.hidden = true;
+            favMovies.forEach(m => {
+                grid1.appendChild(makeMovieCard(m));
+            });
+        }
+
+        function applyProfileToView(profile) {
+            document.getElementById("viewName").textContent = profile.name || "Пользователь";
+            document.getElementById("viewGender").textContent = profile.gender || "Не указана";
+            document.getElementById("viewBirth").textContent = profile.birth || "Не указана";
+            document.getElementById("viewEmail").textContent = profile.email || "Не указана";
+
+            const avatarImg = document.getElementById("avatarImg");
+            avatarImg.src = profile.avatar || "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+                    <rect width="100%" height="100%" fill="#E6E6E6"/>
+                </svg>
+            `);
+        }
+
+        // init
+        const profile = getProfile();
+        applyProfileToView(profile);
+        renderFavorites();
+    </script>
+</body>
+</html>

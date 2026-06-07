@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинокритик — Рейтинг</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="s.html"><img src="img/logo.png" alt="Логотип Кинокритик"></a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="films.html">Фильмы</a>
+            <a href="news.html">Новости</a>
+            <a href="rating.html">Рейтинг</a>
+            <a href="admin.html">Админ</a>
+        </div>
+        <a class="login-btn" href="profil.html">
+            Профиль
+            <img src="img/user.png" alt="" class="user-icon">
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenuBtn.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <main class="rating-page">
+        <h1 class="rating-page-title">Рейтинг</h1>
+        
+        <div class="rating-list">
+            <article class="rating-list-item" data-movie-id="bigmom">
+                <span class="rating-number">1.</span>
+                <a class="rating-link" href="movie.html?id=bigmom">
+                    <img src="img/img1.png" alt="Дом большой мамочки" class="rating-poster-small">
+                </a>
+                <div class="rating-item-info">
+                    <h2 class="rating-item-title"><a class="rating-link" href="movie.html?id=bigmom">Дом большой мамочки</a></h2>
+                    <div class="rating-item-score">
+                        <span>5</span>
+                        <img src="img/icon_star.png" alt="Рейтинг">
+                    </div>
+                </div>
+                <button class="favorite-btn" data-movie-id="bigmom" aria-label="Добавить в избранное">
+                    <img src="img/favorit.png" alt="Избранное" class="favorite-icon">
+                </button>
+            </article>
+
+            <article class="rating-list-item" data-movie-id="avatar">
+                <span class="rating-number">2.</span>
+                <a class="rating-link" href="movie.html?id=avatar">
+                    <img src="img/avatar.png" alt="Аватар" class="rating-poster-small">
+                </a>
+                <div class="rating-item-info">
+                    <h2 class="rating-item-title"><a class="rating-link" href="movie.html?id=avatar">Аватар</a></h2>
+                    <div class="rating-item-score">
+                        <span>5</span>
+                        <img src="img/icon_star.png" alt="Рейтинг">
+                    </div>
+                </div>
+                <button class="favorite-btn" data-movie-id="avatar" aria-label="Добавить в избранное">
+                    <img src="img/favorit.png" alt="Избранное" class="favorite-icon">
+                </button>
+            </article>
+
+            <article class="rating-list-item" data-movie-id="borderlands">
+                <span class="rating-number">3.</span>
+                <a class="rating-link" href="movie.html?id=borderlands">
+                    <img src="img/img3.png" alt="Бордерлендс" class="rating-poster-small">
+                </a>
+                <div class="rating-item-info">
+                    <h2 class="rating-item-title"><a class="rating-link" href="movie.html?id=borderlands">Бордерлендс</a></h2>
+                    <div class="rating-item-score">
+                        <span>4,9</span>
+                        <img src="img/icon_star.png" alt="Рейтинг">
+                    </div>
+                </div>
+                <button class="favorite-btn" data-movie-id="borderlands" aria-label="Добавить в избранное">
+                    <img src="img/favorit.png" alt="Избранное" class="favorite-icon">
+                </button>
+            </article>
+
+            <article class="rating-list-item" data-movie-id="sissy">
+                <span class="rating-number">4.</span>
+                <a class="rating-link" href="movie.html?id=sissy">
+                    <img src="img/img4.png" alt="Сисси" class="rating-poster-small">
+                </a>
+                <div class="rating-item-info">
+                    <h2 class="rating-item-title"><a class="rating-link" href="movie.html?id=sissy">Сисси</a></h2>
+                    <div class="rating-item-score">
+                        <span>4,9</span>
+                        <img src="img/icon_star.png" alt="Рейтинг">
+                    </div>
+                </div>
+                <button class="favorite-btn" data-movie-id="sissy" aria-label="Добавить в избранное">
+                    <img src="img/favorit.png" alt="Избранное" class="favorite-icon">
+                </button>
+            </article>
+
+            <article class="rating-list-item" data-movie-id="married">
+                <span class="rating-number">5.</span>
+                <a class="rating-link" href="movie.html?id=married">
+                    <img src="img/img5.png" alt="Женатый холостяк" class="rating-poster-small">
+                </a>
+                <div class="rating-item-info">
+                    <h2 class="rating-item-title"><a class="rating-link" href="movie.html?id=married">Женатый холостяк</a></h2>
+                    <div class="rating-item-score">
+                        <span>4,9</span>
+                        <img src="img/icon_star.png" alt="Рейтинг">
+                    </div>
+                </div>
+                <button class="favorite-btn" data-movie-id="married" aria-label="Добавить в избранное">
+                    <img src="img/favorit.png" alt="Избранное" class="favorite-icon">
+                </button>
+            </article>
+
+            <article class="rating-list-item" data-movie-id="slave12">
+                <span class="rating-number">6.</span>
+                <a class="rating-link" href="movie.html?id=slave12">
+                    <img src="img/img2.png" alt="12 лет рабства" class="rating-poster-small">
+                </a>
+                <div class="rating-item-info">
+                    <h2 class="rating-item-title"><a class="rating-link" href="movie.html?id=slave12">12 лет рабства</a></h2>
+                    <div class="rating-item-score">
+                        <span>4,9</span>
+                        <img src="img/icon_star.png" alt="Рейтинг">
+                    </div>
+                </div>
+                <button class="favorite-btn" data-movie-id="slave12" aria-label="Добавить в избранное">
+                    <img src="img/favorit.png" alt="Избранное" class="favorite-icon">
+                </button>
+                <div class="favoritev"></div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Кинокритик">
+        </div>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3 class="footer-title">Разделы</h3>
+                <div class="footer-links">
+                    <a href="films.html">Фильмы</a>
+                    <a href="news.html">Новости</a>
+                    <a href="rating.html">Рейтинг</a>
+                </div>
+            </div>
+             <div class="footer-columnn">
+                <h3 class="footer-title">Политика конфиденциальности</h3>
+                <div class="icons">
+                <a href="#"><img src="img/watsapp.png" alt="WhatsApp"></a>
+                <a href="#"><img src="img/VK.png" alt="VK"></a>
+                <a href="#"><img src="img/tg.png" alt="Telegram"></a>
+                </div>
+            </div>
+            <div class="footer-column footer-socials">
+                
+            </div>
+        </div>
+    </footer>
+<script src="js.js"></script>
+</body>
+</html>

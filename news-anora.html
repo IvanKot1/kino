@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинокритик — Триумф «Аноры» и российские актёры в Каннах</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="s.html"><img src="img/logo.png" alt="Логотип Кинокритик"></a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="films.html">Фильмы</a>
+            <a href="news.html">Новости</a>
+            <a href="rating.html">Рейтинг</a>
+            <a href="admin.html">Админ</a>
+        </div>
+        <a class="login-btn" href="profil.html">
+            Профиль
+            <img src="img/user.png" alt="" class="user-icon">
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenuBtn.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <main class="news-detail-page">
+        <section class="news-detail-hero">
+            <h1 class="news-detail-title">Триумф «Аноры» и российские актёры в Каннах.</h1>
+            <div class="news-detail-gallery">
+                <img src="img/trio.png" alt="Актёры фильма «Анора» на фестивале" class="news-detail-photo">
+                <img src="img/gorod.png" alt="Канны и атмосфера фестиваля" class="news-detail-photo">
+            </div>
+            <img src="img/rul.png" alt="" class="news-detail-icon" aria-hidden="true">
+        </section>
+
+        <section class="news-detail-content">
+            <p>В 2024&nbsp;году фильм «Анора» американского режиссёра Шона Бэйкера с российскими актёрами в главных ролях получил «Золотую пальмовую ветвь» на Каннском кинофестивале.</p>
+            <p>Сюжет картины: юная жизнерадостная и наивная стриптизёрша Анора (Майки Мэдисон) знакомится в нью‑йоркском ночном клубе с сыном русского олигарха Иваном Захаровым (Марк Эйдельштейн). После приватного танца и недолгого знакомства молодые люди понимают, что созданы друг для друга, и женятся. Однако об этом узнают родители Ивана (Дарья Екамасова и Алексей Серебряков) и экстренно прилетают в Нью‑Йорк, чтобы любыми способами избавить сына от позорного брака. Решить проблему должен молчаливый боец русской мафии Игорь (Юра Борисов), живущий с бабушкой.</p>
+            <p>Критики отмечали игру российских актёров: Марка Эйдельштейна называли «русским Тимоти Шаламе», у Серебрякова и Екамасовой были небольшие, но запоминающиеся и колоритные роли. Про Борисова писали, что на его молчаливом и харизматичном персонаже держится вся вторая половина фильма.</p>
+            <p>«Анора» стала первой за 67&nbsp;лет картиной с отечественными актёрами в главных ролях, удостоенной главного приза кинофестиваля.</p>
+        </section>
+
+        <img src="img/film.png" alt="" class="news-detail-filmstrip" aria-hidden="true">
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Кинокритик">
+        </div>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3 class="footer-title">Разделы</h3>
+                <div class="footer-links">
+                    <a href="films.html">Фильмы</a>
+                    <a href="news.html">Новости</a>
+                    <a href="rating.html">Рейтинг</a>
+                </div>
+            </div>
+            <div class="footer-columnn">
+                <h3 class="footer-title">Политика конфиденциальности</h3>
+                <div class="icons">
+                    <a href="#"><img src="img/watsapp.png" alt="WhatsApp"></a>
+                    <a href="#"><img src="img/VK.png" alt="VK"></a>
+                    <a href="#"><img src="img/tg.png" alt="Telegram"></a>
+                </div>
+            </div>
+            <div class="footer-column footer-socials">
+                
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

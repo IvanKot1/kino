@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинокритик — Фильмы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="s.html"><img src="img/logo.png" alt="Логотип Кинокритик"></a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="films.html">Фильмы</a>
+            <a href="news.html">Новости</a>
+            <a href="rating.html">Рейтинг</a>
+            <a href="admin.html">Админ</a>
+        </div>
+        <a class="login-btn" href="profil.html">
+            Профиль
+            <img src="img/user.png" alt="" class="user-icon">
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenuBtn.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <main class="films-page">
+        <header class="films-header">
+            <h1 class="films-title">Фильмы</h1>
+
+            <div class="films-filters">
+                <div class="filter-control">
+
+                    <select id="genreSelect" class="filter-select">
+                        <div class="fil">
+                           <option value="all" selected>Все жанры</option>
+                        <option value="Фантастика">Фантастика</option>
+                        <option value="Комедия">Комедия</option>
+                        <option value="Биография">Биография</option>
+                        <option value="Мелодрама">Мелодрама</option>
+                        <option value="Ужасы">Ужасы</option> 
+                        </div>
+                        
+                    </select>
+                </div>
+
+                <div class="filter-control">
+                    <select id="ratingSelect" class="filter-select">
+                        <option value="none" selected>По умолчанию</option>
+                        <option value="desc">Сначала высокий</option>
+                        <option value="asc">Сначала низкий</option>
+                    </select>
+                </div>
+
+                <div class="filter-search-wrapper">
+                    <input
+                        id="searchInput"
+                        type="text"
+                        class="filter-search"
+                        placeholder="Поиск"
+                    >
+                </div>
+            </div>
+        </header>
+
+        <section class="films-list-section">
+            <div id="filmsGrid" class="films-grid">
+                <!-- Карточки фильмов будут отрисованы через JS -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Кинокритик">
+        </div>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3 class="footer-title">Разделы</h3>
+                <div class="footer-links">
+                    <a href="films.html">Фильмы</a>
+                    <a href="news.html">Новости</a>
+                    <a href="rating.html">Рейтинг</a>
+                </div>
+            </div>
+             <div class="footer-columnn">
+                <h3 class="footer-title">Политика конфиденциальности</h3>
+                <div class="icons">
+                <a href="#"><img src="img/watsapp.png" alt="WhatsApp"></a>
+                <a href="#"><img src="img/VK.png" alt="VK"></a>
+                <a href="#"><img src="img/tg.png" alt="Telegram"></a>
+                </div>
+            </div>
+            <div class="footer-column footer-socials">
+                
+            </div>
+        </div>
+    </footer>
+
+    <script src="movies.js"></script>
+    <script>
+        function getAllMovies() {
+            const base = window.MOVIES || [];
+            const raw = localStorage.getItem("admin_films");
+            const admin = raw ? JSON.parse(raw) : [];
+            return [...base, ...admin];
+        }
+        const movies = getAllMovies();
+        const filmsGrid = document.getElementById("filmsGrid");
+        const genreSelect = document.getElementById("genreSelect");
+        const ratingSelect = document.getElementById("ratingSelect");
+        const searchInput = document.getElementById("searchInput");
+
+        function createFilmCard(movie) {
+            const card = document.createElement("a");
+            card.className = "film-card";
+            card.href = `movie.html?id=${encodeURIComponent(movie.id)}`;
+
+            const ratingText = (movie.ratingAvg ?? movie.rating ?? 0)
+                .toString()
+                .replace(".", ",");
+
+            card.innerHTML = `
+                <img src="${movie.poster}" alt="${movie.title}" class="film-poster">
+                <h2 class="film-title">${movie.title}</h2>
+                <p class="film-rating">${ratingText} ☆</p>
+            `;
+
+            return card;
+        }
+
+        function renderMovies() {
+            const searchValue = searchInput.value.trim().toLowerCase();
+            const selectedGenre = genreSelect.value;
+            const ratingOrder = ratingSelect.value;
+
+            let filtered = movies.filter(movie => {
+                const matchesGenre =
+                    selectedGenre === "all" || movie.genre === selectedGenre;
+                const matchesSearch =
+                    movie.title.toLowerCase().includes(searchValue);
+                return matchesGenre && matchesSearch;
+            });
+
+            if (ratingOrder === "desc") {
+                filtered.sort((a, b) => (b.ratingAvg ?? 0) - (a.ratingAvg ?? 0));
+            } else if (ratingOrder === "asc") {
+                filtered.sort((a, b) => (a.ratingAvg ?? 0) - (b.ratingAvg ?? 0));
+            }
+
+            filmsGrid.innerHTML = "";
+            if (filtered.length === 0) {
+                filmsGrid.innerHTML = "<p class=\"films-empty\">Фильмы не найдены.</p>";
+                return;
+            }
+
+            filtered.forEach(movie => {
+                filmsGrid.appendChild(createFilmCard(movie));
+            });
+        }
+
+        genreSelect.addEventListener("change", renderMovies);
+        ratingSelect.addEventListener("change", renderMovies);
+        searchInput.addEventListener("input", renderMovies);
+
+        renderMovies();
+    </script>
+</body>
+</html>

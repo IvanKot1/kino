@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинокритик — Мой рейтинг</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="s.html"><img src="img/logo.png" alt="Логотип Кинокритик"></a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="films.html">Фильмы</a>
+            <a href="news.html">Новости</a>
+            <a href="rating.html">Рейтинг</a>
+            <a href="admin.html">Админ</a>
+        </div>
+        <a class="login-btn" href="profil.html">
+            Профиль
+            <img src="img/user.png" alt="" class="user-icon">
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenuBtn.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <main class="myrating-page">
+        <h1 class="myrating-title">Мой рейтинг</h1>
+        <div id="myRatingGrid" class="myrating-grid"></div>
+        <p id="myRatingEmpty" class="myrating-empty" hidden>Пока нет оценённых фильмов.</p>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Кинокритик">
+        </div>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3 class="footer-title">Разделы</h3>
+                <div class="footer-links">
+                    <a href="films.html">Фильмы</a>
+                    <a href="news.html">Новости</a>
+                    <a href="rating.html">Рейтинг</a>
+                </div>
+            </div>
+             <div class="footer-columnn">
+                <h3 class="footer-title">Политика конфиденциальности</h3>
+                <div class="icons">
+                <a href="#"><img src="img/watsapp.png" alt="WhatsApp"></a>
+                <a href="#"><img src="img/VK.png" alt="VK"></a>
+                <a href="#"><img src="img/tg.png" alt="Telegram"></a>
+                </div>
+            </div>
+            <div class="footer-column footer-socials">
+                
+            </div>
+    </footer>
+
+    <script src="movies.js"></script>
+    <script>
+        function getRatings() {
+            const raw = localStorage.getItem("movie_ratings");
+            return raw ? JSON.parse(raw) : {};
+        }
+
+        function makeMovieCard(movie, myRating) {
+            const el = document.createElement("a");
+            el.className = "myrating-movie";
+            el.href = `movie.html?id=${encodeURIComponent(movie.id)}`;
+            el.innerHTML = `
+                <img class="myrating-movie-poster" src="${movie.poster}" alt="${movie.title}">
+                <div class="myrating-movie-title">${movie.title}</div>
+                <div class="myrating-movie-rating">${myRating} ☆</div>
+            `;
+            return el;
+        }
+
+        const movies = window.MOVIES || [];
+        const ratings = getRatings();
+        const ratedIds = Object.keys(ratings).filter(id => Number(ratings[id]) > 0);
+        const ratedMovies = movies.filter(m => ratedIds.includes(m.id));
+
+        const grid = document.getElementById("myRatingGrid");
+        const empty = document.getElementById("myRatingEmpty");
+        grid.innerHTML = "";
+
+        if (ratedMovies.length === 0) {
+            empty.hidden = false;
+        } else {
+            empty.hidden = true;
+            ratedMovies.forEach(m => grid.appendChild(makeMovieCard(m, ratings[m.id])));
+        }
+    </script>
+</body>
+</html>
+

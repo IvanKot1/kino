@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинокритик — Админ-панель</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="s.html"><img src="img/logo.png" alt="Логотип Кинокритик"></a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="films.html">Фильмы</a>
+            <a href="news.html">Новости</a>
+            <a href="rating.html">Рейтинг</a>
+            <a href="admin.html">Админ</a>
+        </div>
+        <a class="login-btn" href="profil.html">
+            Профиль
+            <img src="img/user.png" alt="" class="user-icon">
+        </a>
+    </nav>
+
+    <main class="admin-page">
+        <div class="admin-layout">
+            <aside class="admin-sidebar">
+                <h2 class="admin-sidebar-title">Панель управления</h2>
+                <nav class="admin-nav">
+                    <button class="admin-nav-item is-active" data-tab="dashboard">Дашборд</button>
+                    <button class="admin-nav-item" data-tab="films">Добавить фильм</button>
+                    <button class="admin-nav-item" data-tab="reviews">Бан отзывов</button>
+                    <button class="admin-nav-item" data-tab="users">Ban пользователей</button>
+                    <button class="admin-nav-item" data-tab="messages">Сообщения чата</button>
+                </nav>
+            </aside>
+
+            <div class="admin-content">
+                <section id="tab-dashboard" class="admin-tab is-active">
+                    <h1 class="admin-title">Дашборд</h1>
+                    <div class="admin-cards">
+                        <div class="admin-card">
+                            <div class="admin-card-value" id="adminStatUsers">0</div>
+                            <div class="admin-card-label">Пользователей в чате</div>
+                        </div>
+                        <div class="admin-card">
+                            <div class="admin-card-value" id="adminStatMessages">0</div>
+                            <div class="admin-card-label">Всего сообщений</div>
+                        </div>
+                        <div class="admin-card">
+                            <div class="admin-card-value" id="adminStatBanned">0</div>
+                            <div class="admin-card-label">Забанено пользователей</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tab-films" class="admin-tab">
+                    <h1 class="admin-title">Добавить фильм</h1>
+                    <form id="adminFilmForm" class="admin-form">
+                        <div class="admin-form-row">
+                            <label class="admin-form-label">Картинка (URL)</label>
+                            <input id="filmPoster" class="admin-form-input" type="text" placeholder="img/example.png" required>
+                        </div>
+                        <div class="admin-form-row">
+                            <label class="admin-form-label">Название</label>
+                            <input id="filmTitle" class="admin-form-input" type="text" placeholder="Название фильма" required>
+                        </div>
+                        <div class="admin-form-row admin-form-row--full">
+                            <label class="admin-form-label">Описание</label>
+                            <textarea id="filmDesc" class="admin-form-textarea" placeholder="Описание фильма" rows="4"></textarea>
+                        </div>
+                        <div class="admin-form-grid">
+                            <div class="admin-form-row">
+                                <label class="admin-form-label">Страна</label>
+                                <input id="filmCountry" class="admin-form-input" type="text" placeholder="США">
+                            </div>
+                            <div class="admin-form-row">
+                                <label class="admin-form-label">Год</label>
+                                <input id="filmYear" class="admin-form-input" type="text" placeholder="2024">
+                            </div>
+                            <div class="admin-form-row">
+                                <label class="admin-form-label">Жанр</label>
+                                <select id="filmGenre" class="admin-form-select">
+                                    <option value="Фантастика">Фантастика</option>
+                                    <option value="Комедия">Комедия</option>
+                                    <option value="Биография">Биография</option>
+                                    <option value="Мелодрама">Мелодрама</option>
+                                    <option value="Ужасы">Ужасы</option>
+                                </select>
+                            </div>
+                            <div class="admin-form-row">
+                                <label class="admin-form-label">Рейтинг</label>
+                                <input id="filmRating" class="admin-form-input" type="number" step="0.1" min="0" max="5" placeholder="4.5">
+                            </div>
+                        </div>
+                        <button type="submit" class="admin-form-btn">Добавить фильм</button>
+                    </form>
+                </section>
+
+                <section id="tab-reviews" class="admin-tab">
+                    <h1 class="admin-title">Бан отзывов</h1>
+                    <p class="admin-hint">Выбери отзыв и нажми «Забанить», чтобы скрыть его на сайте.</p>
+                    <div id="adminReviewsList" class="admin-reviews-list"></div>
+                </section>
+
+                <section id="tab-users" class="admin-tab">
+                    <h1 class="admin-title">Ban пользователей</h1>
+                    <p class="admin-hint">Забанить пользователя и указать причину бана.</p>
+                    <h3 class="admin-subtitle">Активные</h3>
+                    <div id="adminUsersList" class="admin-users-list"></div>
+                    <h3 class="admin-subtitle">Забаненные</h3>
+                    <div id="adminBannedList" class="admin-banned-list"></div>
+                </section>
+
+                <section id="tab-messages" class="admin-tab">
+                    <h1 class="admin-title">Сообщения чата</h1>
+                    <p class="admin-hint">Модерация: удаляй неподходящие сообщения кнопкой «+».</p>
+                    <div id="adminMessages" class="admin-messages-list"></div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="banUserModal" class="admin-modal" hidden>
+        <div class="admin-modal-backdrop"></div>
+        <div class="admin-modal-content">
+            <h3 class="admin-modal-title">Забанить пользователя</h3>
+            <form id="banUserForm" class="admin-form">
+                <input type="hidden" id="banUserId">
+                <div class="admin-form-row admin-form-row--full">
+                    <label class="admin-form-label">Причина бана</label>
+                    <textarea id="banReason" class="admin-form-textarea" placeholder="Укажите причину бана" rows="3" required></textarea>
+                </div>
+                <div class="admin-form-actions">
+                    <button type="button" class="admin-form-btn admin-form-btn--outline" id="banCancel">Отмена</button>
+                    <button type="submit" class="admin-form-btn admin-form-btn--danger">Забанить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footerr">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Кинокритик">
+        </div>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3 class="footer-title">Разделы</h3>
+                <div class="footer-links">
+                    <a href="films.html">Фильмы</a>
+                    <a href="news.html">Новости</a>
+                    <a href="rating.html">Рейтинг</a>
+                </div>
+            </div>
+            <div class="footer-columnn">
+                <h3 class="footer-title">Политика конфиденциальности</h3>
+                <div class="icons">
+                    <a href="#"><img src="img/watsapp.png" alt="WhatsApp"></a>
+                    <a href="#"><img src="img/VK.png" alt="VK"></a>
+                    <a href="#"><img src="img/tg.png" alt="Telegram"></a>
+                </div>
+            </div>
+            <div class="footer-column footer-socials"></div>
+        </div>
+    </footer>
+
+    <script src="movies.js"></script>
+    <script>
+        const ADMIN_USER_NAMES = {
+            user1: "Пользователь 1",
+            user2: "Пользователь 2",
+            user3: "Пользователь 3"
+        };
+
+        function adminGetChats() {
+            const raw = localStorage.getItem("chats");
+            return raw ? JSON.parse(raw) : {};
+        }
+        function adminSetChats(chats) {
+            localStorage.setItem("chats", JSON.stringify(chats));
+        }
+
+        function getBannedReviews() {
+            const raw = localStorage.getItem("banned_reviews");
+            return raw ? JSON.parse(raw) : [];
+        }
+        function setBannedReviews(arr) {
+            localStorage.setItem("banned_reviews", JSON.stringify(arr));
+        }
+
+        function getBannedUsers() {
+            const raw = localStorage.getItem("banned_users");
+            return raw ? JSON.parse(raw) : {};
+        }
+        function setBannedUsers(obj) {
+            localStorage.setItem("banned_users", JSON.stringify(obj));
+        }
+
+        function getAdminFilms() {
+            const raw = localStorage.getItem("admin_films");
+            return raw ? JSON.parse(raw) : [];
+        }
+        function setAdminFilms(arr) {
+            localStorage.setItem("admin_films", JSON.stringify(arr));
+        }
+
+        function getAllReviewsForAdmin() {
+            const movies = window.MOVIES || [];
+            const adminFilms = getAdminFilms();
+            const allMovies = [...movies, ...adminFilms];
+            const banned = getBannedReviews();
+            const result = [];
+
+            allMovies.forEach(m => {
+                const defaults = (window.DEFAULT_REVIEWS && window.DEFAULT_REVIEWS[m.id]) || [];
+                const storedRaw = localStorage.getItem("reviews_" + m.id);
+                const stored = storedRaw ? JSON.parse(storedRaw) : [];
+                const all = [...defaults, ...stored];
+
+                all.forEach((r, idx) => {
+                    const key = m.id + "|" + (r.name || "") + "|" + (r.text || "");
+                    if (banned.some(b => b.key === key)) return;
+                    result.push({
+                        movieId: m.id,
+                        movieTitle: m.title,
+                        name: r.name || "Имя",
+                        text: r.text || "",
+                        key: key
+                    });
+                });
+            });
+            return result;
+        }
+
+        function banReview(key) {
+            const arr = getBannedReviews();
+            arr.push({ key });
+            setBannedReviews(arr);
+            renderAdminReviews();
+        }
+
+        function renderAdminReviews() {
+            const container = document.getElementById("adminReviewsList");
+            container.innerHTML = "";
+            const list = getAllReviewsForAdmin();
+            if (list.length === 0) {
+                container.innerHTML = "<p class=\"admin-empty\">Нет отзывов для модерации или все забанены.</p>";
+                return;
+            }
+            list.forEach(item => {
+                const row = document.createElement("div");
+                row.className = "admin-review-row";
+                row.innerHTML = `
+                    <div class="admin-review-content">
+                        <div class="admin-review-meta"><strong>${item.movieTitle}</strong> · ${item.name}</div>
+                        <div class="admin-review-text">${item.text}</div>
+                    </div>
+                    <button type="button" class="admin-ban-btn">Забанить</button>
+                `;
+                row.querySelector(".admin-ban-btn").addEventListener("click", () => banReview(item.key));
+                container.appendChild(row);
+            });
+        }
+
+        function updateDashboard() {
+            const chats = adminGetChats();
+            const userIds = Object.keys(chats);
+            let totalMessages = 0;
+            userIds.forEach(uid => {
+                totalMessages += (chats[uid] || []).length;
+            });
+            const bannedUsers = getBannedUsers();
+            document.getElementById("adminStatUsers").textContent = userIds.length;
+            document.getElementById("adminStatMessages").textContent = totalMessages;
+            document.getElementById("adminStatBanned").textContent = Object.keys(bannedUsers).length;
+        }
+
+        function renderAdminUsers() {
+            const container = document.getElementById("adminUsersList");
+            const bannedContainer = document.getElementById("adminBannedList");
+            container.innerHTML = "";
+            bannedContainer.innerHTML = "";
+
+            const users = [
+                { id: "user1", name: "Пользователь 1" },
+                { id: "user2", name: "Пользователь 2" },
+                { id: "user3", name: "Пользователь 3" }
+            ];
+            const banned = getBannedUsers();
+
+            users.forEach(u => {
+                const chats = adminGetChats();
+                const msgCount = (chats[u.id] || []).length;
+                if (banned[u.id]) {
+                    const row = document.createElement("div");
+                    row.className = "admin-user-row admin-user-row--banned";
+                    row.innerHTML = `
+                        <span class="admin-user-name">${u.name}</span>
+                        <span class="admin-user-reason">Причина: ${banned[u.id].reason || "—"}</span>
+                        <button type="button" class="admin-unban-btn" data-id="${u.id}">Разбанить</button>
+                    `;
+                    row.querySelector(".admin-unban-btn").addEventListener("click", () => {
+                        const b = getBannedUsers();
+                        delete b[u.id];
+                        setBannedUsers(b);
+                        renderAdminUsers();
+                        updateDashboard();
+                    });
+                    bannedContainer.appendChild(row);
+                } else {
+                    const row = document.createElement("div");
+                    row.className = "admin-user-row";
+                    row.innerHTML = `
+                        <span class="admin-user-name">${u.name}</span>
+                        <span class="admin-user-stat">${msgCount} сообщ.</span>
+                        <button type="button" class="admin-ban-user-btn" data-id="${u.id}">Ban</button>
+                    `;
+                    row.querySelector(".admin-ban-user-btn").addEventListener("click", () => {
+                        document.getElementById("banUserId").value = u.id;
+                        document.getElementById("banReason").value = "";
+                        document.getElementById("banUserModal").hidden = false;
+                    });
+                    container.appendChild(row);
+                }
+            });
+        }
+
+        document.getElementById("adminFilmForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const films = getAdminFilms();
+            const id = "admin_" + Date.now();
+            films.push({
+                id,
+                title: document.getElementById("filmTitle").value.trim(),
+                poster: document.getElementById("filmPoster").value.trim() || "img/img1.png",
+                description: document.getElementById("filmDesc").value.trim() || "",
+                country: document.getElementById("filmCountry").value.trim() || "—",
+                year: document.getElementById("filmYear").value.trim() || "—",
+                genre: document.getElementById("filmGenre").value,
+                ratingAvg: parseFloat(document.getElementById("filmRating").value) || 0
+            });
+            setAdminFilms(films);
+            document.getElementById("adminFilmForm").reset();
+            alert("Фильм добавлен!");
+        });
+
+        const modal = document.getElementById("banUserModal");
+        document.getElementById("banCancel").addEventListener("click", () => { modal.hidden = true; });
+        modal.querySelector(".admin-modal-backdrop").addEventListener("click", () => { modal.hidden = true; });
+
+        document.getElementById("banUserForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const userId = document.getElementById("banUserId").value;
+            const reason = document.getElementById("banReason").value.trim() || "Не указана";
+            const b = getBannedUsers();
+            b[userId] = { reason, bannedAt: Date.now() };
+            setBannedUsers(b);
+            modal.hidden = true;
+            renderAdminUsers();
+            updateDashboard();
+        });
+
+        function renderAdminMessages() {
+            const container = document.getElementById("adminMessages");
+            container.innerHTML = "";
+
+            const chats = adminGetChats();
+            const userIds = Object.keys(chats);
+            if (userIds.length === 0) {
+                container.textContent = "Пока нет сохранённых сообщений.";
+                return;
+            }
+
+            userIds.forEach(userId => {
+                const history = chats[userId] || [];
+                if (history.length === 0) return;
+
+                const userBlock = document.createElement("div");
+                userBlock.className = "admin-user-block";
+
+                const title = document.createElement("h3");
+                title.className = "admin-user-title";
+                title.textContent = ADMIN_USER_NAMES[userId] || userId;
+                userBlock.appendChild(title);
+
+                history.forEach((m, index) => {
+                    const row = document.createElement("div");
+                    row.className = "admin-message-row";
+
+                    const info = document.createElement("div");
+                    info.className = "admin-message-text";
+                    const from = m.from === "me" ? "Я" : "Собеседник";
+                    info.textContent = from + ": " + (m.text || "");
+
+                    const del = document.createElement("button");
+                    del.className = "admin-delete-btn";
+                    del.type = "button";
+                    del.textContent = "+";
+                    del.title = "Удалить сообщение";
+                    del.addEventListener("click", () => {
+                        const chatsNow = adminGetChats();
+                        const historyNow = chatsNow[userId] || [];
+                        historyNow.splice(index, 1);
+                        chatsNow[userId] = historyNow;
+                        adminSetChats(chatsNow);
+                        renderAdminMessages();
+                        updateDashboard();
+                        renderAdminUsers();
+                    });
+
+                    row.appendChild(info);
+                    row.appendChild(del);
+                    userBlock.appendChild(row);
+                });
+
+                container.appendChild(userBlock);
+            });
+        }
+
+        document.querySelectorAll(".admin-nav-item").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".admin-nav-item").forEach(b => b.classList.remove("is-active"));
+                document.querySelectorAll(".admin-tab").forEach(t => t.classList.remove("is-active"));
+                btn.classList.add("is-active");
+                const tab = document.getElementById("tab-" + btn.dataset.tab);
+                if (tab) tab.classList.add("is-active");
+                if (btn.dataset.tab === "reviews") renderAdminReviews();
+            });
+        });
+
+        // Мобильное меню
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Закрытие меню при клике на ссылку
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        updateDashboard();
+        renderAdminUsers();
+        renderAdminMessages();
+    </script>
+</body>
+</html>

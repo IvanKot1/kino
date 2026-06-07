@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинокритик — Настройки</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="s.html"><img src="img/logo.png" alt="Логотип Кинокритик"></a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="films.html">Фильмы</a>
+            <a href="news.html">Новости</a>
+            <a href="rating.html">Рейтинг</a>
+            <a href="admin.html">Админ</a>
+        </div>
+        <a class="login-btn" href="profil.html">
+            Профиль
+            <img src="img/user.png" alt="" class="user-icon">
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenuBtn.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <main class="profile-page">
+        <img src="img/star.png" alt="" class="profile-decor-star profile-decor-star--left">
+        <img src="img/star.png" alt="" class="profile-decor-star profile-decor-star--right">
+        <img src="img/plenka.png" alt="" class="profile-decor-film">
+
+        <section class="profile-top">
+            <div class="profile-avatar-block">
+                <div class="profile-avatar">
+                    <img id="avatarImg" src="" alt="Аватар" />
+                </div>
+                <label class="profile-avatar-btn">
+                    Изменить фото
+                    <input id="avatarInput" type="file" accept="image/*" hidden>
+                </label>
+            </div>
+
+            <div class="profile-info">
+                <h1 class="profile-panel-title">Настройки</h1>
+                <form id="settingsForm" class="profile-form">
+                    <div class="profile-form-grid">
+                        <div class="profile-field">
+                            <label class="profile-field-label" for="nameInput">Имя</label>
+                            <input id="nameInput" class="profile-field-input" type="text" placeholder="Имя">
+                        </div>
+                        <div class="profile-field">
+                            <label class="profile-field-label" for="genderInput">Пол</label>
+                            <input id="genderInput" class="profile-field-input" type="text" placeholder="Пол">
+                        </div>
+                        <div class="profile-field">
+                            <label class="profile-field-label" for="birthInput">Дата</label>
+                            <input id="birthInput" class="profile-field-input" type="text" placeholder="ДД.ММ.ГГГГ">
+                        </div>
+                        <div class="profile-field">
+                            <label class="profile-field-label" for="emailInput">Почта</label>
+                            <input id="emailInput" class="profile-field-input" type="email" placeholder="Почта">
+                        </div>
+                        <div class="profile-field profile-field--full">
+                            <label class="profile-field-label" for="passInput">Пароль</label>
+                            <input id="passInput" class="profile-field-input" type="password" placeholder="Пароль">
+                        </div>
+                    </div>
+                    <button class="profile-save-btn" type="submit">Сохранить</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Кинокритик">
+        </div>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3 class="footer-title">Разделы</h3>
+                <div class="footer-links">
+                    <a href="films.html">Фильмы</a>
+                    <a href="news.html">Новости</a>
+                    <a href="rating.html">Рейтинг</a>
+                </div>
+            </div>
+           <div class="footer-columnn">
+                <h3 class="footer-title">Политика конфиденциальности</h3>
+                <div class="icons">
+                <a href="#"><img src="img/watsapp.png" alt="WhatsApp"></a>
+                <a href="#"><img src="img/VK.png" alt="VK"></a>
+                <a href="#"><img src="img/tg.png" alt="Telegram"></a>
+                </div>
+            </div>
+            <div class="footer-column footer-socials">
+                
+            </div>
+    </footer>
+
+    <script>
+        function getProfile() {
+            const raw = localStorage.getItem("profile");
+            return raw ? JSON.parse(raw) : {};
+        }
+
+        function setProfile(profile) {
+            localStorage.setItem("profile", JSON.stringify(profile));
+        }
+
+        function applyProfileToForm(profile) {
+            document.getElementById("nameInput").value = profile.name || "";
+            document.getElementById("genderInput").value = profile.gender || "";
+            document.getElementById("birthInput").value = profile.birth || "";
+            document.getElementById("emailInput").value = profile.email || "";
+            document.getElementById("passInput").value = profile.pass || "";
+
+            const avatarImg = document.getElementById("avatarImg");
+            avatarImg.src = profile.avatar || "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+                    <rect width="100%" height="100%" fill="#E6E6E6"/>
+                </svg>
+            `);
+        }
+
+        const profile = getProfile();
+        applyProfileToForm(profile);
+
+        document.getElementById("settingsForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const next = {
+                ...getProfile(),
+                name: document.getElementById("nameInput").value.trim(),
+                gender: document.getElementById("genderInput").value.trim(),
+                birth: document.getElementById("birthInput").value.trim(),
+                email: document.getElementById("emailInput").value.trim(),
+                pass: document.getElementById("passInput").value
+            };
+            setProfile(next);
+            applyProfileToForm(next);
+        });
+
+        document.getElementById("avatarInput").addEventListener("change", (e) => {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = () => {
+                const next = { ...getProfile(), avatar: reader.result };
+                setProfile(next);
+                applyProfileToForm(next);
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>
+

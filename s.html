@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинокритик</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="s.html"><img src="img/logo.png" alt="Логотип Кинокритик"></a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="films.html">Фильмы</a>
+            <a href="news.html">Новости</a>
+            <a href="rating.html">Рейтинг</a>
+            <a href="admin.html">Админ</a>
+        </div>
+        <a class="login-btn" href="profil.html">
+            Профиль
+            <img src="img/user.png" alt="" class="user-icon">
+        </a>
+    </nav>
+
+    <script>
+        // Мобильное меню
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenuBtn.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <main>
+        <!-- Hero-блок -->
+        <section class="main-content hero">
+            <div class="text-section">
+                <p class="glav-text">
+                    Каждый фильм должен быть триллером,<br>
+                    даже если это всего лишь скромная<br>
+                    любовная история
+                </p>
+                <button class="watch-btn">Посмотреть</button>
+            </div>
+            <div class="image-section"></div>
+        </section>
+
+        <!-- Популярные фильмы -->
+        <section class="section section-popular" id="films">
+            <h2 class="section-title">Популярные</h2>
+            <div class="popular-list">
+                <article class="movie-card">
+                    <a href="movie.html?id=bigmom"><img src="img/img1.png" alt="Дом большой мамочки"></a>
+                </article>
+                <article class="movie-card">
+                    <a href="movie.html?id=slave12"><img src="img/img2.png" alt="Грозовой перевал"></a>
+                </article>
+                <article class="movie-card">
+                    <a href="movie.html?id=borderlands"><img src="img/img3.png" alt="Грозовой перевал"></a>
+                </article>
+                <article class="movie-card">
+                    <a href="movie.html?id=sissy"><img src="img/img4.png" alt="Мотылёк"></a>
+                </article>
+                <article class="movie-card">
+                    <a href="movie.html?id=married"><img src="img/img5.png" alt="Без обид"></a>
+                </article>
+                <article class="movie-card">
+                    <a href="movie.html?id=avatar"><img src="img/img6.png" alt="Пришелец из будущего"></a>
+                </article>
+                <article class="movie-card">
+                    
+                </article>
+            </div>
+        </section>
+
+        <!-- Отзывы -->
+        <section class="section section-reviews" id="reviews">
+           
+            <h2 class="section-title-h2"> <img src="img/star.png" alt="" class="decor-stardecor-star--reviews">Отзывы</h2>
+            <div class="reviews-grid">
+                <article class="review-item">
+                    <a href="movie.html?id=luck"><img src="img/luck.png" alt="Удачи, Чак!" class="review-poster"></a>
+                    
+                    <p class="review-text">Игорь<br>- Типичная голливудская романтическая комедия.</p>
+                </article>
+                <article class="review-item">
+                    <a href="movie.html?id=wave5"><img src="img/five.png" alt="5-я волна" class="review-poster"></a>
+
+                    <p class="review-text">Степан<br>- Подойдёт поклонникам YA‑фантастики.</p>
+                </article>
+                <article class="review-item">
+                    <a href="movie.html?id=astral"><img src="img/astral.png" alt="Астрал" class="review-poster"></a>
+                   
+                    <p class="review-text">Лера<br>- Астрал — настоящий шампунь для нервов.</p>
+                </article>
+                <article class="review-item">
+                    <a href="movie.html?id=mirror"><img src="img/zerkalo.png" alt="Зеркало" class="review-poster"></a>
+                   
+                    <p class="review-text">Юля<br>- Трогательная история любви, выдержанная временем.</p>
+                </article>
+                <div class="review-item1">
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Рейтинг фильмов -->
+        <section class="section section-rating" id="rating">
+            
+            <h2 class="section-title-h2"><img src="img/star.png" alt="" class="decor-stardecor-star--reviews">Рейтинг фильмов</h2>
+            <div class="rating-grid">
+                <article class="rating-item">
+                    <a href="movie.html?id=avatar"><img src="img/avatar.png" alt="Аватар" class="rating-poster"></a>
+                    <div class="rating-info">
+                        <h3><a class="rating-link" href="movie.html?id=avatar">Аватар</a></h3>
+                        <div class="rating-score">
+                            <span>5</span>
+                            <img src="img/icon_star.png" alt="Рейтинг">
+                        </div>
+                    </div>
+                </article>
+                <article class="rating-item">
+                    <a href="movie.html?id=whiterosy"><img src="img/white.png" alt="Белые росы" class="rating-poster"></a>
+                    <div class="rating-info">
+                        <h3><a class="rating-link" href="movie.html?id=whiterosy">Белые росы</a></h3>
+                        <div class="rating-score">
+                            <span>5</span>
+                            <img src="img/icon_star.png" alt="Рейтинг">
+                        </div>
+                    </div>
+                </article>
+                <article class="rating-item">
+                    <a href="movie.html?id=slave12"><img src="img/img2.png" alt="12 лет рабства" class="rating-poster"></a>
+                    <div class="rating-info">
+                        <h3><a class="rating-link" href="movie.html?id=slave12">12 лет рабства</a></h3>
+                        <div class="rating-score">
+                            <span>4,7</span>
+                            <img src="img/icon_star.png" alt="Рейтинг">
+                        </div>
+                    </div>
+                </article>
+                <article class="rating-item">
+                    <a href="movie.html?id=sissy"><img src="img/img4.png" alt="Сисси" class="rating-poster"></a>
+                    <div class="rating-info">
+                        <h3><a class="rating-link" href="movie.html?id=sissy">Сисси</a></h3>
+                        <div class="rating-score">
+                            <span>4</span>
+                            <img src="img/icon_star.png" alt="Рейтинг">
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Кинокритик">
+        </div>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3 class="footer-title">Разделы</h3>
+                <div class="footer-links">
+                    <a href="films.html">Фильмы</a>
+                    <a href="news.html">Новости</a>
+                    <a href="rating.html">Рейтинг</a>
+                </div>
+            </div>
+            <div class="footer-columnn">
+                <h3 class="footer-title">Политика конфиденциальности</h3>
+                <div class="icons">
+                <a href="#"><img src="img/watsapp.png" alt="WhatsApp"></a>
+                <a href="#"><img src="img/VK.png" alt="VK"></a>
+                <a href="#"><img src="img/tg.png" alt="Telegram"></a>
+                </div>
+            </div>
+            <div class="footer-column footer-socials">
+                
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

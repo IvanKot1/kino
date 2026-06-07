@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинокритик — Фильм</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="s.html"><img src="img/logo.png" alt="Логотип Кинокритик"></a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="films.html">Фильмы</a>
+            <a href="news.html">Новости</a>
+            <a href="rating.html">Рейтинг</a>
+            <a href="admin.html">Админ</a>
+        </div>
+        <a class="login-btn" href="profil.html">
+            Профиль
+            <img src="img/user.png" alt="" class="user-icon">
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenuBtn.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <main class="movie-page">
+        <img src="img/star.png" alt="" class="movie-decor-star movie-decor-star--left">
+        <img src="img/star.png" alt="" class="movie-decor-star movie-decor-star--mid">
+        <img src="img/plenka.png" alt="" class="movie-decor-film">
+
+        <section class="movie-hero">
+            <img id="moviePoster" class="movie-poster" src="" alt="">
+
+            <div class="movie-info">
+                <h1 id="movieTitle" class="movie-title"></h1>
+                <p id="movieDesc" class="movie-desc"></p>
+
+                <div class="movie-meta">
+                    <div class="movie-meta-row"><span class="movie-meta-label">Страна:</span> <span id="movieCountry"></span></div>
+                    <div class="movie-meta-row"><span class="movie-meta-label">Год:</span> <span id="movieYear"></span></div>
+                    <div class="movie-meta-row"><span class="movie-meta-label">Жанр:</span> <span id="movieGenre"></span></div>
+                    <div class="movie-meta-row"><span class="movie-meta-label">Рейтинг:</span> <span id="movieRating"></span></div>
+                </div>
+
+                <div class="movie-actions">
+                    <button id="rateToggle" class="movie-btn movie-btn--outline" type="button">
+                        <span class="movie-btn-icon"><img src="img/icon_star.png" alt=""></span>
+                       <p></p> Оценить
+                    </button>
+                    <button id="favBtn" class="movie-btn movie-btn--solid" type="button">
+                        <span class="movie-btn-icon">
+                            <img src="img/favorit.png" alt="Избранное" class="favorite-icon">
+                        </span>
+                        Избранное
+                    </button>
+                </div>
+
+                <div id="ratePanel" class="rate-panel" hidden>
+                    <div class="rate-stars" role="radiogroup" aria-label="Оценка">
+                        <button class="rate-star" type="button" data-value="1">★</button>
+                        <button class="rate-star" type="button" data-value="2">★</button>
+                        <button class="rate-star" type="button" data-value="3">★</button>
+                        <button class="rate-star" type="button" data-value="4">★</button>
+                        <button class="rate-star" type="button" data-value="5">★</button>
+                    </div>
+                    <div class="rate-hint" id="rateHint"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="movie-reviews">
+            <h2 class="movie-section-title">Отзывы</h2>
+
+            <div id="reviewsGrid" class="reviews-grid-cards"></div>
+
+            <form id="reviewForm" class="review-form">
+                
+                <input id="reviewText" class="review-input" type="text" placeholder="Оставить отзыв" maxlength="220">
+                <button class="review-send" type="submit" aria-label="Отправить отзыв">▶</button>
+            </form>
+        </section>
+
+        <section class="movie-similar">
+            <h2 class="movie-section-title">Похожие</h2>
+            <div id="similarGrid" class="similar-grid"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Кинокритик">
+        </div>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3 class="footer-title">Разделы</h3>
+                <div class="footer-links">
+                    <a href="films.html">Фильмы</a>
+                    <a href="news.html">Новости</a>
+                    <a href="rating.html">Рейтинг</a>
+                </div>
+            </div>
+            <div class="footer-columnn">
+                <h3 class="footer-title">Политика конфиденциальности</h3>
+                <div class="icons">
+                <a href="#"><img src="img/watsapp.png" alt="WhatsApp"></a>
+                <a href="#"><img src="img/VK.png" alt="VK"></a>
+                <a href="#"><img src="img/tg.png" alt="Telegram"></a>
+                </div>
+            </div>
+            <div class="footer-column footer-socials">
+                
+            </div>
+        </div>
+    </footer>
+
+    <script src="movies.js"></script>
+    <script>
+        function getQueryId() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get("id");
+        }
+
+        function getFavorites() {
+            const raw = localStorage.getItem("favorites");
+            return raw ? JSON.parse(raw) : [];
+        }
+
+        function setFavorites(list) {
+            localStorage.setItem("favorites", JSON.stringify(list));
+        }
+
+        function getRatings() {
+            const raw = localStorage.getItem("movie_ratings");
+            return raw ? JSON.parse(raw) : {};
+        }
+
+        function setRatings(obj) {
+            localStorage.setItem("movie_ratings", JSON.stringify(obj));
+        }
+
+        function getStoredReviews(movieId) {
+            const raw = localStorage.getItem(`reviews_${movieId}`);
+            return raw ? JSON.parse(raw) : [];
+        }
+
+        function setStoredReviews(movieId, list) {
+            localStorage.setItem(`reviews_${movieId}`, JSON.stringify(list));
+        }
+
+        function getBannedReviews() {
+            const raw = localStorage.getItem("banned_reviews");
+            return raw ? JSON.parse(raw) : [];
+        }
+
+        function isReviewBanned(movieId, name, text) {
+            const key = movieId + "|" + (name || "") + "|" + (text || "");
+            return getBannedReviews().some(b => b.key === key);
+        }
+
+        function formatRating(value) {
+            return String(value).replace(".", ",");
+        }
+
+        const baseMovies = window.MOVIES || [];
+        const adminRaw = localStorage.getItem("admin_films");
+        const adminFilms = adminRaw ? JSON.parse(adminRaw) : [];
+        const movies = [...baseMovies, ...adminFilms];
+        const movieId = getQueryId() || "luck";
+        const movie = movies.find(m => m.id === movieId) || movies[0];
+
+        // Fill page
+        document.title = `Кинокритик — ${movie.title}`;
+        const poster = document.getElementById("moviePoster");
+        poster.src = movie.poster;
+        poster.alt = movie.title;
+
+        document.getElementById("movieTitle").textContent = movie.title;
+        document.getElementById("movieDesc").textContent = movie.description || "";
+        document.getElementById("movieCountry").textContent = movie.country || "—";
+        document.getElementById("movieYear").textContent = movie.year || "—";
+        document.getElementById("movieGenre").textContent = movie.genre || "—";
+
+        // Rating display (avg + my rating)
+        const ratingEl = document.getElementById("movieRating");
+        const ratings = getRatings();
+        const myRating = ratings[movie.id];
+        const avg = movie.ratingAvg ?? "—";
+        ratingEl.textContent = myRating ? `${formatRating(avg)} (моя: ${myRating})` : formatRating(avg);
+
+        // Favorites
+        const favBtn = document.getElementById("favBtn");
+        function syncFav() {
+            const favs = getFavorites();
+            const isFav = favs.includes(movie.id);
+            favBtn.classList.toggle("is-active", isFav);
+        }
+        favBtn.addEventListener("click", () => {
+            const favs = getFavorites();
+            const i = favs.indexOf(movie.id);
+            if (i >= 0) favs.splice(i, 1);
+            else favs.push(movie.id);
+            setFavorites(favs);
+            syncFav();
+        });
+        syncFav();
+
+        // Rate (1..5)
+        const ratePanel = document.getElementById("ratePanel");
+        const rateToggle = document.getElementById("rateToggle");
+        const rateHint = document.getElementById("rateHint");
+        function syncRateStars() {
+            const r = getRatings()[movie.id];
+            document.querySelectorAll(".rate-star").forEach(btn => {
+                const v = Number(btn.dataset.value);
+                btn.classList.toggle("is-on", r && v <= r);
+            });
+            rateHint.textContent = r ? `Ваша оценка: ${r}/5` : "Выберите оценку 1–5";
+            const avg = movie.ratingAvg ?? "—";
+            ratingEl.textContent = r ? `${formatRating(avg)} (моя: ${r})` : formatRating(avg);
+        }
+        rateToggle.addEventListener("click", () => {
+            ratePanel.hidden = !ratePanel.hidden;
+            syncRateStars();
+        });
+        document.querySelectorAll(".rate-star").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const v = Number(btn.dataset.value);
+                const next = { ...getRatings(), [movie.id]: v };
+                setRatings(next);
+                syncRateStars();
+            });
+        });
+        syncRateStars();
+
+        // Reviews
+        function renderReviews() {
+            const grid = document.getElementById("reviewsGrid");
+            grid.innerHTML = "";
+            const genericDefaults = [
+                { name: "Имя", text: "Отличный фильм, оставил сильное впечатление." },
+                { name: "Имя", text: "Сюжет держит внимание до самого конца." },
+                { name: "Имя", text: "Понравилась атмосфера и музыка." },
+                { name: "Имя", text: "Есть спорные моменты, но в целом — достойно." }
+            ];
+            const defaults = (window.DEFAULT_REVIEWS && window.DEFAULT_REVIEWS[movie.id])
+                ? window.DEFAULT_REVIEWS[movie.id]
+                : genericDefaults;
+            const stored = getStoredReviews(movie.id);
+            const all = [...defaults, ...stored];
+            const banned = getBannedReviews();
+            const filtered = all.filter(r => {
+                const key = movie.id + "|" + (r.name || "") + "|" + (r.text || "");
+                return !banned.some(b => b.key === key);
+            });
+
+            filtered.slice(0, 12).forEach(r => {
+                const card = document.createElement("article");
+                card.className = "review-card";
+                card.innerHTML = `
+                    <div class="review-card-head">
+                        <div class="review-avatar"></div>
+                        <div class="review-name">${r.name || "Имя"}</div>
+                    </div>
+                    <div class="review-body">${r.text || ""}</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+        renderReviews();
+
+        document.getElementById("reviewForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const name = (document.getElementById("reviewName")?.value?.trim()) || "Имя";
+            const text = document.getElementById("reviewText").value.trim();
+            if (!text) return;
+            const list = getStoredReviews(movie.id);
+            list.unshift({ name, text });
+            setStoredReviews(movie.id, list.slice(0, 50));
+            document.getElementById("reviewText").value = "";
+            renderReviews();
+        });
+
+        // Similar by genre
+        function renderSimilar() {
+            const grid = document.getElementById("similarGrid");
+            grid.innerHTML = "";
+            const same = movies.filter(m => m.genre === movie.genre && m.id !== movie.id).slice(0, 6);
+            same.forEach(m => {
+                const a = document.createElement("a");
+                a.className = "similar-card";
+                a.href = `movie.html?id=${encodeURIComponent(m.id)}`;
+                a.innerHTML = `
+                    <img src="${m.poster}" alt="${m.title}">
+                    <div class="similar-title">${m.title}</div>
+                `;
+                grid.appendChild(a);
+            });
+        }
+        renderSimilar();
+    </script>
+</body>
+</html>
+

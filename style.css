@@ -1,0 +1,3200 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Oswald:wght@200..700&display=swap');
+* {
+            margin: 0;
+            padding: 0;
+            font-family: Merriweather;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            background: linear-gradient(145deg, #1a0720 0%, #2a1035 100%);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+        
+        nav {
+            width: 100%;
+            max-width: 1900px;
+            height: 111px;
+            display: flex;
+            align-items: center;
+            padding: 0 60px;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 0 auto;
+        }
+
+        /* Логотип */
+        .logo {
+            color: #FBF9FF;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, #d9bbff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+        /* Контейнер для ссылок навигации - теперь по центру */
+        .nav-links {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a {
+            color: #FBF9FF;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: color 0.2s;
+            font-family: 'Inter', sans-serif;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #b87cff;
+        }
+
+        /* Кнопка входа */
+        .login-btn {
+            height: 66px;
+            position: absolute;
+            right: 60px;
+            background: #7924B7;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 35px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(121, 36, 183, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .login-btn:hover {
+            background: #9635e0;
+            transform: scale(1.02);
+            box-shadow: 0 12px 25px rgba(121, 36, 183, 0.6);
+        }
+
+        /* Стилизация иконки пользователя */
+        .user-icon {
+            width: 22px;
+            height: 22px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Страницы входа и регистрации */
+        .auth-page {
+            min-height: calc(100vh - 111px);
+            padding: 60px 24px 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-forms {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .auth-form-block {
+            width: 100%;
+            max-width: 420px;
+            background: #7924B7;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .auth-form-title {
+            font-family: "Merriweather", serif;
+            font-size: 28px;
+            font-weight: 400;
+            color: #FBF9FF;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .auth-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .auth-field--checkbox {
+            flex-direction: row;
+            align-items: flex-start;
+        }
+
+        .auth-label {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            color: #FBF9FF;
+            opacity: 0.95;
+        }
+
+        .auth-input {
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #DC86FE;
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .auth-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .auth-input:focus {
+            border-color: #b87cff;
+            background: rgba(163, 55, 223, 0.3);
+        }
+
+        .auth-checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            color: #FBF9FF;
+            opacity: 0.9;
+            cursor: pointer;
+            
+        }
+
+        .auth-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: #1D1D1D;
+        }
+
+        .auth-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .auth-btn {
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .auth-btn--primary {
+            background-color: #DC86FE;
+            color: #1D1D1D;
+        }
+
+        .auth-btn--primary:hover {
+            background: #9635e0;
+            transform: translateY(-1px);
+            box-shadow: 0 12px 25px #DC86FE;
+        }
+
+        .auth-btn--secondary {
+            background: transparent;
+            color: #1D1D1D;
+            border: 1px solid rgba(184, 124, 255, 0.5);
+            background-color: #DC86FE;
+        }
+
+        .auth-btn--secondary:hover {
+            background: rgba(184, 124, 255, 0.15);
+            color: #d9bbff;
+            border-color: #b87cff;
+        }
+
+        .auth-btn--full {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .auth-page {
+                padding: 40px 16px 60px;
+            }
+
+            .auth-form-block {
+                padding: 28px 24px;
+            }
+
+            .auth-form-title {
+                font-size: 24px;
+                margin-bottom: 24px;
+            }
+            
+            .auth-buttons {
+                flex-direction: column;
+            }
+            
+            .auth-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+            
+        /* Регистрация — тёмно-фиолетовый контейнер, светло-фиолетовые поля */
+        .auth-form-block--reg {
+            border: none;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+        }
+        .auth-form-block--reg .auth-input {
+           
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #1a0720;
+        }
+
+        .auth-form-block--reg .auth-input::placeholder {
+            color: rgba(26, 7, 32, 0.6);
+        }
+
+        .auth-form-block--reg .auth-input:focus {
+           
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .auth-form-block--reg .auth-btn--primary {
+            
+            color: #1a0720;
+            box-shadow: none;
+        }
+
+        .auth-form-block--reg .auth-btn--primary:hover {
+           
+            color: #1a0720;
+        }
+
+        .auth-form-block--reg .auth-checkbox {
+            accent-color: #E1BEE7;
+        }
+
+        .auth-link {
+            display: block;
+            text-align: center;
+            margin-top: 12px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .auth-link:hover {
+            color: #F3E5F5;
+        }
+
+        .auth-buttons--reg {
+            flex-direction: column;
+        }
+
+        /* Основной контент (hero) */
+        .main-content {
+            width: 100%;
+            max-width: 1900px;
+            margin: 0 auto;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background-image: url('img/bacground.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: calc(100vh - 111px);
+        }
+ .main-content.hero{
+    width: 100%;
+    max-width: 1900px;
+ }
+        .text-section {
+            width: 650px;
+        }
+
+        .glav-text{
+            color:#FBF9FF;
+            font-family: Oswald;
+            font-size: 44px;
+            line-height: 1.4;
+            font-weight: 400;
+            width: 1077px;
+            text-align: center;
+            margin-left: 600px;
+            margin-top: 400px;
+        }
+
+        .watch-btn {
+            margin-top: 350px;
+            margin-left: 700px;
+            padding: 18px 60px;
+            background: #A337DF;
+            border-radius: 10px;
+            border: none;
+            display: block;
+            color: #FBF9FF;
+            font-size: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(163, 55, 223, 0.5);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .watch-btn:hover {
+            background: #bf4aff;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(163, 55, 223, 0.7);
+        }
+
+        /* Общие секции */
+        .section {
+            width: 1200px;
+            margin: 0 auto;
+            padding: 60px 60px 40px;
+            color: #FBF9FF;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: "Merriweather", serif;
+            font-size: 32px;
+            font-weight: 400;
+            text-align: center;
+           margin-top: 100px;
+        }
+ .section-title-h2{
+            font-family: "Merriweather", serif;
+            font-size: 32px;
+            font-weight: 400;
+            text-align: center;
+           margin-right: 130px;
+        }
+
+        .section p {
+            font-family: "Nunito Sans", sans-serif;
+        }
+
+        .decor-star {
+            position: absolute;
+            width: 40px;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .decor-star--reviews {
+            left: 15%;
+            top: 0;
+        }
+
+        .decor-star--rating {
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+        }
+
+        .decor-film {
+            position: absolute;
+            right: -80px;
+            bottom: -40px;
+            width: 260px;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Новости */
+        .news-page {
+            width: 1500px;
+            margin: 0 auto;
+            padding: 40px 60px 60px;
+            color: #FBF9FF;
+            position: relative;
+            overflow: hidden;
+            min-height: calc(100vh - 111px);
+        }
+
+        .news-title {
+            font-family: "Merriweather", serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 26px;
+        }
+
+        .news-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 467px);
+            gap: 26px;
+            align-items: start;
+            justify-content: center;
+            padding-bottom: 40px;
+        }
+
+        .news-bg {
+            position: absolute;
+            right: -40px;
+            bottom: -60px;
+            width: 960px;
+            height: 840px;
+            object-fit: contain;
+            opacity: 0.95;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .news-card {
+            width: 467px;
+            height: 276px;
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+            position: relative;
+            z-index: 1;
+        }
+
+        .news-card-img {
+            width: 467px;
+            height: 163px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .news-card-caption {
+            height: 111px;
+            padding: 14px 16px;
+            text-align: center;
+            background: #DC86FE;
+            color: #1E0420;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        .news-grid-preview {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0 0;
+        }
+
+        .news-more {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 12px;
+            background: rgba(121, 36, 183, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #FBF9FF;
+            text-decoration: none;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            transition: transform 0.15s, background 0.15s;
+        }
+
+        .news-more:hover {
+            transform: translateY(-1px);
+            background: rgba(163, 55, 223, 0.35);
+        }
+
+        /* Мой рейтинг (отдельная страница без профиля) */
+        .myrating-page {
+            margin: 0 auto;
+            padding: 40px 60px 60px;
+            color: #FBF9FF;
+            min-height: calc(100vh - 111px);
+             background-image: url(img/back_rate.png);
+            background-repeat: no-repeat;
+        }
+
+        .myrating-title {
+            font-family: "Merriweather", serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 26px;
+            
+        }
+
+        .myrating-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 26px;
+            align-items: flex-start;
+
+        }
+
+        .myrating-movie {
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-decoration: none;
+            color: #FBF9FF;
+            transition: transform 0.15s ease;
+            
+        }
+
+        .myrating-movie:hover {
+            transform: translateY(-2px);
+        }
+
+        .myrating-movie-poster {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .myrating-movie-title {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .myrating-movie-rating {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .myrating-empty {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 16px;
+            opacity: 0.85;
+            margin-top: 16px;
+        }
+
+        /* Популярные фильмы */
+        .section-popular {
+            text-align: center;
+            
+        }
+
+        .popular-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .movie-card img {
+            width: 160px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Популярные по отзывам */
+        .section-reviews {
+            margin-top: 20px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 32px 80px;
+            margin-top: 32px;
+            
+        }
+
+        .review-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            width: 420px;
+            
+        }
+        .review-item1 {
+            background-image: url(img/starrwar.png);
+            background-repeat: no-repeat;
+        }
+
+        .review-poster {
+            width: 120px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .review-text {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #FBF9FF;
+        }
+
+        /* Рейтинг фильмов */
+        .section-rating {
+            margin-top: 20px;
+            padding-bottom: 80px;
+        }
+
+        .rating-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 32px 80px;
+            margin-top: 32px;
+        }
+
+        .rating-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .rating-poster {
+            width: 120px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .rating-info h3 {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .rating-score {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 16px;
+        }
+
+        .rating-score img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Страница со списком фильмов */
+        .films-page {
+            width: 1200px;
+            margin: 0 auto;
+            padding: 40px 60px 60px;
+            color: #FBF9FF;
+        }
+
+        .films-header {
+            margin-bottom: 32px;
+        }
+
+        .films-title {
+            font-family: "Merriweather", serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .films-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 20px;
+            align-items: center;
+        }
+
+        .filter-control {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .filter-label {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .filter-select {
+            min-width: 160px;
+            padding: 10px 14px;
+            border-radius: 24px;
+            border: none;
+            background-color: #c557ff;
+            color: #1E0420;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .filter-search-wrapper {
+            flex: 1;
+        }
+
+        .filter-search {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 24px;
+            border: none;
+            background-color: #c557ff;
+            color: #1E0420;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .filter-search::placeholder {
+            color: #3b003d;
+            opacity: 0.7;
+        }
+
+        .filter-search:focus {
+            outline: 2px solid #b87cff;
+            outline-offset: 2px;
+        }
+
+        .films-list-section {
+            margin-top: 24px;
+        }
+
+        .films-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 28px 24px;
+        }
+
+        .film-card {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-decoration: none;
+            color: #FBF9FF;
+            transition: transform 0.15s ease;
+        }
+
+        .film-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .film-poster {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .film-title {
+            margin-top: 4px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .film-rating {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        /* Страница фильма */
+        .movie-page {
+            width: 1200px;
+            margin: 0 auto;
+            padding: 40px 60px 70px;
+            color: #FBF9FF;
+            position: relative;
+            overflow: hidden;
+            min-height: calc(100vh - 111px);
+        }
+
+        .movie-decor-star {
+            position: absolute;
+            width: 44px;
+            opacity: 0.65;
+            pointer-events: none;
+        }
+
+        .movie-decor-star--left {
+            left: 12px;
+            top: 36px;
+        }
+
+        .movie-decor-star--mid {
+            right: 210px;
+            top: 110px;
+            opacity: 0.55;
+        }
+
+        .movie-decor-film {
+            position: absolute;
+            right: -60px;
+            bottom: -10px;
+            width: 520px;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .movie-hero {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 34px;
+            align-items: start;
+        }
+
+        .movie-poster {
+            width: 220px;
+            border-radius: 14px;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .movie-title {
+            font-family: "Merriweather", serif;
+            font-size: 34px;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .movie-desc {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            line-height: 1.55;
+            width: 720px;
+            opacity: 0.95;
+        }
+
+        .movie-meta {
+            margin-top: 18px;
+            display: grid;
+            gap: 8px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+        }
+
+        .movie-meta-label {
+            opacity: 0.85;
+            margin-right: 6px;
+        }
+
+        .movie-actions {
+            margin-top: 22px;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .movie-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #FBF9FF;
+            background: rgba(121, 36, 183, 0.28);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .movie-btn:hover {
+            transform: translateY(-1px);
+            background: rgba(121, 36, 183, 0.4);
+        }
+
+        .movie-btn--solid {
+            background: #7924B7;
+            border-color: rgba(255, 255, 255, 0.16);
+            box-shadow: 0 10px 25px rgba(121, 36, 183, 0.35);
+        }
+
+        .movie-btn--solid.is-active {
+            background: #9635e0;
+        }
+
+        .movie-btn-icon {
+            width: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+.decor-stardecor-star--reviews{
+    width: 50px;
+    height: 50px;
+    margin-right: 100px;
+}
+        .movie-btn-icon .favorite-icon {
+            width: 40px;
+            height: 30px;
+        }
+
+        .rate-panel {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.12);
+            width: 360px;
+        }
+
+        .rate-stars {
+            display: flex;
+            gap: 8px;
+        }
+
+        .rate-star {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(121, 36, 183, 0.22);
+            color: rgba(255, 255, 255, 0.55);
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.15s, background 0.15s, color 0.15s;
+        }
+
+        .rate-star:hover {
+            transform: translateY(-1px);
+        }
+
+        .rate-star.is-on {
+            color: #FBF9FF;
+            background: rgba(163, 55, 223, 0.55);
+        }
+
+        .rate-hint {
+            margin-top: 10px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 12px;
+            opacity: 0.85;
+        }
+
+        .movie-section-title {
+            margin-top: 26px;
+            font-family: "Merriweather", serif;
+            font-size: 26px;
+            font-weight: 400;
+        }
+
+        .reviews-grid-cards {
+            margin-top: 18px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .review-card {
+            background: #c557ff;
+            color: #1E0420;
+            border-radius: 10px;
+            padding: 12px;
+            min-height: 120px;
+        }
+
+        .review-card-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .review-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #a9f0ff, #5b7bff);
+        }
+
+        .review-name {
+            font-family: "Nunito Sans", sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .review-body {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 11px;
+            line-height: 1.45;
+        }
+
+        .review-form {
+            margin-top: 16px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .review-input {
+            flex: 1;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background: #c557ff;
+            color: #1E0420;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+        }
+
+        .review-input--name {
+            flex: 0 0 160px;
+        }
+
+        .review-send {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            background: #c557ff;
+            color: #1E0420;
+            font-size: 16px;
+        }
+
+        .similar-grid {
+            margin-top: 16px;
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .similar-card {
+            width: 150px;
+            text-decoration: none;
+            color: #FBF9FF;
+        }
+
+        .similar-card img {
+            width: 150px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .similar-title {
+            margin-top: 8px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .films-empty {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 16px;
+            text-align: center;
+            grid-column: 1 / -1;
+        }
+
+        /* Страница рейтинга */
+        .rating-page {
+            width: 1200px;
+            margin: 0 auto;
+            padding: 40px 60px 60px;
+            color: #FBF9FF;
+        }
+
+        .rating-page-title {
+            font-family: "Merriweather", serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 32px;
+        }
+
+        .rating-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px 40px;
+        }
+
+        .rating-list-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .rating-list-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+.favoritev{
+    background-image: url(img/starrwar.png);
+}
+        .rating-number {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            min-width: 32px;
+            color: #FBF9FF;
+        }
+
+        .rating-poster-small {
+            width: 80px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .rating-item-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .rating-item-title {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: #FBF9FF;
+            margin: 0;
+        }
+
+        .rating-item-score {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            color: #FBF9FF;
+        }
+
+        .rating-item-score img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .rating-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .favorite-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background-color: #A337DF;
+            color: #FBF9FF;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            flex-shrink: 0;
+            padding: 0;
+        }
+
+        .favorite-btn:hover {
+            background-color: #bf4aff;
+            transform: scale(1.1);
+        }
+
+        .favorite-btn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+        }
+
+        .favorite-btn.favorite-active {
+            background-color: #7924B7;
+        }
+
+        .favorite-icon {
+            width: 22px;
+            height: 22px;
+border-radius: 10px;
+        }
+
+        /* Страница профиля */
+        .profile-page {
+            padding: 40px 60px 60px;
+            color: #FBF9FF;
+            position: relative;
+            overflow: hidden;
+            min-height: calc(100vh - 111px);
+            background-image: url(img/back_rate.png);
+            background-repeat: no-repeat;
+        }
+
+        .profile-decor-star {
+            position: absolute;
+            width: 44px;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .profile-decor-star--left {
+            left: 10px;
+            top: 30px;
+        }
+
+        .profile-decor-star--right {
+            right: 220px;
+            top: 280px;
+            opacity: 0.55;
+        }
+
+        .profile-decor-film {
+            position: absolute;
+            right: -40px;
+            bottom: 40px;
+            width: 520px;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .profile-top {
+            display: grid;
+            grid-template-columns: 240px 1fr 260px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .profile-avatar-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .profile-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: #E6E6E6;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-avatar-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 22px;
+            border-radius: 10px;
+            background: #7924B7;
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(121, 36, 183, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            user-select: none;
+        }
+
+        .profile-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 35vw;
+            gap: 18px 30px;
+            margin-top: 10px;
+        }
+
+        .profile-info-label {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 12px;
+            opacity: 0.75;
+            margin-bottom: 6px;
+        }
+
+        .profile-info-value {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .profile-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+            margin-right: 100px;
+            color: #7924B7;
+        }
+
+        .profile-action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(121, 36, 183, 0.2);
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            text-decoration: none;
+
+        }
+
+        .profile-action:hover {
+            background: rgba(121, 36, 183, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .profile-action.is-active {
+            background: rgba(163, 55, 223, 0.55);
+        }
+
+        .profile-action-icon {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+        }
+
+        .profile-panel {
+            display: none;
+            margin-top: 32px;
+        }
+
+        .profile-panel.is-active {
+            display: block;
+        }
+
+        .profile-panel-title {
+            font-family: "Merriweather", serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 22px;
+        }
+
+        .profile-favorites-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 26px;
+            align-items: flex-start;
+        }
+
+        .profile-movie {
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-decoration: none;
+            color: #FBF9FF;
+            transition: transform 0.15s ease;
+        }
+
+        .profile-movie:hover {
+            transform: translateY(-2px);
+        }
+
+        .profile-movie-poster {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .profile-movie-title {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .profile-movie-rating {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .profile-empty {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 16px;
+            opacity: 0.85;
+        }
+
+        .profile-form {
+            width: 820px;
+        }
+
+        .profile-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 40px;
+        }
+
+        .profile-field--full {
+            grid-column: 1 / -1;
+        }
+
+        .profile-field-label {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 12px;
+            opacity: 0.8;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .profile-field-input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background: #c557ff;
+            color: #1E0420;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+        }
+
+        .profile-save-btn {
+            margin-top: 22px;
+            padding: 12px 26px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            background: #7924B7;
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            box-shadow: 0 10px 25px rgba(121, 36, 183, 0.35);
+        }
+
+        /* Чат: тулбар и поиск */
+        .chat-toolbar {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .chat-toolbar-left {
+            display: flex;
+            gap: 12px;
+        }
+
+        .chat-toolbar-right {
+            flex: 1;
+
+        }
+
+        .chat-toolbar-tab {
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .chat-toolbar-tab:hover {
+            background: rgba(121, 36, 183, 0.2);
+            color: #FBF9FF;
+        }
+
+        .chat-toolbar-tab--active {
+            background: rgba(121, 36, 183, 0.35);
+            color: #FBF9FF;
+        }
+
+        .chat-search-input {
+            width: 300px;
+            padding: 12px 16px 12px 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(163, 55, 223, 0.2);
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+            margin-left: 470px;
+        }
+
+        .chat-search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .chat-search-input:focus {
+            border-color: #b87cff;
+            background: rgba(163, 55, 223, 0.3);
+        }
+
+        .chat-user.is-banned {
+            opacity: 0.6;
+        }
+
+        .chat-user-banned-badge {
+            font-size: 11px;
+            color: #e53e3e;
+            margin-left: 6px;
+        }
+
+        .chat-message-wrap {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .chat-message-wrap--me {
+            flex-direction: row-reverse;
+        }
+
+        .chat-message-delete-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            border: none;
+            background: rgba(197, 48, 48, 0.4);
+            color: #FBF9FF;
+            cursor: pointer;
+            font-size: 14px;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+
+        .chat-message-delete-btn:hover {
+            opacity: 1;
+            background: rgba(197, 48, 48, 0.7);
+        }
+
+        .chat-message--them {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            max-width: 75%;
+        }
+
+        .chat-box {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .chat-layout {
+            width: 100%;
+            max-width: 980px;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 18px;
+            align-items: start;
+        }
+
+        .chat-users {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            background: rgba(163, 55, 223, 0.20);
+            overflow: hidden;
+        }
+
+        .chat-users-title {
+            padding: 14px 14px 12px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .chat-users-list {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-user {
+            display: grid;
+            grid-template-columns: 34px 1fr auto;
+            gap: 10px;
+            align-items: center;
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .chat-user.is-active {
+            background: rgba(163, 55, 223, 0.30);
+            border-color: rgba(255, 255, 255, 0.16);
+        }
+
+        .chat-user-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.75);
+        }
+
+        .chat-user-name {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .chat-user-write {
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            background: #7924B7;
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 13px;
+            box-shadow: 0 10px 25px rgba(121, 36, 183, 0.25);
+            transition: transform 0.15s, background 0.15s;
+        }
+
+        .chat-user-write:hover {
+            background: #9635e0;
+            transform: translateY(-1px);
+        }
+
+        .chat-header {
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .chat-with {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 12px;
+            opacity: 0.75;
+        }
+
+        .chat-with-name {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .chat-messages {
+            height: 260px;
+            overflow: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-message {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            line-height: 1.4;
+            padding: 10px 12px;
+            border-radius: 10px;
+            width: 70%;
+        }
+
+        .chat-message--system {
+            background: rgba(255, 255, 255, 0.08);
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .chat-message--me {
+            background: rgba(163, 55, 223, 0.35);
+            align-self: flex-end;
+        }
+
+        .chat-form {
+            display: flex;
+            gap: 10px;
+            padding: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background: #c557ff;
+            color: #1E0420;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+        }
+
+        .chat-send {
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            background: #7924B7;
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+        }
+
+        .chat-input:disabled,
+        .chat-send:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+        /* Админ-панель */
+        .admin-page {
+            min-height: calc(100vh - 111px);
+            padding: 40px 50px 60px;
+            background: linear-gradient(145deg, rgba(26, 7, 32, 0.5) 0%, rgba(42, 16, 53, 0.5) 100%);
+        }
+
+        .admin-layout {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+
+        .admin-sidebar {
+            background: linear-gradient(180deg, rgba(121, 36, 183, 0.25) 0%, rgba(121, 36, 183, 0.15) 100%);
+            border: 1px solid rgba(220, 134, 254, 0.2);
+            border-radius: 20px;
+            padding: 28px;
+            position: sticky;
+            top: 140px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(121, 36, 183, 0.15);
+        }
+
+        .admin-sidebar-title {
+            font-family: "Merriweather", serif;
+            font-size: 22px;
+            color: #FBF9FF;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .admin-nav-item {
+            padding: 20px 18px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.85);
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.25s;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            
+        }
+        .admin-nav-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: #DC86FE;
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
+        .admin-nav-item:hover {
+            background: rgba(163, 55, 223, 0.35);
+            transform: translateX(4px);
+        }
+
+        .admin-nav-item.is-active {
+            background: linear-gradient(135deg, #7924B7 0%, #9635e0 100%);
+            color: #FBF9FF;
+            box-shadow: 0 4px 15px rgba(121, 36, 183, 0.4);
+        }
+
+        .admin-nav-item.is-active::before {
+            opacity: 1;
+        }
+
+        .admin-content {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 36px;
+            backdrop-filter: blur(5px);
+            min-width: 0;
+        }
+
+        .admin-tab {
+            display: none;
+        }
+
+        .admin-tab.is-active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .admin-title {
+            font-family: "Merriweather", serif;
+            font-size: 32px;
+            color: #FBF9FF;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .admin-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .admin-card {
+            background: linear-gradient(135deg, rgba(121, 36, 183, 0.25) 0%, rgba(121, 36, 183, 0.15) 100%);
+            border: 1px solid rgba(220, 134, 254, 0.2);
+            border-radius: 18px;
+            padding: 28px;
+            text-align: center;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(121, 36, 183, 0.25);
+        }
+
+        .admin-card-value {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #DC86FE 0%, #b87cff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .admin-card-label {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+
+        .admin-form {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .admin-form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .admin-form-row--full {
+            grid-column: 1 / -1;
+        }
+
+        .admin-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .admin-form-label {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+        }
+
+        .admin-form-input,
+        .admin-form-textarea,
+        .admin-form-select {
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(121, 36, 183, 0.3);
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.25s;
+        }
+
+        .admin-form-input:focus,
+        .admin-form-textarea:focus,
+        .admin-form-select:focus {
+            border-color: #DC86FE;
+            background: rgba(121, 36, 183, 0.4);
+            box-shadow: 0 0 0 3px rgba(220, 134, 254, 0.15);
+        }
+
+        .admin-form-input::placeholder,
+        .admin-form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .admin-form-textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .admin-form-select {
+            cursor: pointer;
+        }
+
+        .admin-form-btn {
+            padding: 14px 28px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, #7924B7 0%, #9635e0 100%);
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            align-self: flex-start;
+            box-shadow: 0 4px 15px rgba(121, 36, 183, 0.3);
+        }
+
+        .admin-form-btn:hover {
+            background: linear-gradient(135deg, #9635e0 0%, #a945f0 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(121, 36, 183, 0.4);
+        }
+
+        .admin-form-btn--outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: none;
+        }
+
+        .admin-form-btn--outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-form-btn--danger {
+            background: linear-gradient(135deg, #c53030 0%, #e53e3e 100%);
+            box-shadow: 0 4px 15px rgba(197, 48, 48, 0.3);
+        }
+
+        .admin-form-btn--danger:hover {
+            background: linear-gradient(135deg, #e53e3e 0%, #fc5a5a 100%);
+            box-shadow: 0 8px 25px rgba(197, 48, 48, 0.4);
+        }
+
+        .admin-form-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .admin-hint {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.65);
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            background: rgba(121, 36, 183, 0.15);
+            border-radius: 10px;
+            border-left: 3px solid #DC86FE;
+        }
+
+        .admin-subtitle {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 17px;
+            color: #DC86FE;
+            margin: 28px 0 16px;
+            font-weight: 600;
+        }
+
+        .admin-reviews-list,
+        .admin-users-list,
+        .admin-banned-list,
+        .admin-messages-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .admin-review-row,
+        .admin-user-row {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 18px;
+            background: rgba(121, 36, 183, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            transition: all 0.25s;
+        }
+
+        .admin-review-row:hover,
+        .admin-user-row:hover {
+            background: rgba(121, 36, 183, 0.25);
+            border-color: rgba(220, 134, 254, 0.3);
+        }
+
+        .admin-user-row--banned {
+            background: rgba(197, 48, 48, 0.25);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .admin-review-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .admin-review-meta {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+        }
+
+        .admin-review-text {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            color: #FBF9FF;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .admin-ban-btn {
+            padding: 10px 18px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, #c53030 0%, #e53e3e 100%);
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+
+        .admin-ban-btn:hover {
+            background: linear-gradient(135deg, #e53e3e 0%, #fc5a5a 100%);
+            transform: translateY(-1px);
+        }
+
+        .admin-user-name {
+            font-family: "Nunito Sans", sans-serif;
+            font-weight: 600;
+            color: #FBF9FF;
+            font-size: 15px;
+        }
+
+        .admin-user-stat,
+        .admin-user-reason {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .admin-ban-user-btn {
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, #c53030 0%, #e53e3e 100%);
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .admin-ban-user-btn:hover {
+            background: linear-gradient(135deg, #e53e3e 0%, #fc5a5a 100%);
+            transform: translateY(-1px);
+        }
+
+        .admin-unban-btn {
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, #38a169 0%, #48bb78 100%);
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .admin-unban-btn:hover {
+            background: linear-gradient(135deg, #48bb78 0%, #68d391 100%);
+            transform: translateY(-1px);
+        }
+
+        .admin-user-block {
+            margin-bottom: 28px;
+            padding: 20px;
+            background: rgba(121, 36, 183, 0.1);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .admin-user-title {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 16px;
+            color: #DC86FE;
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .admin-message-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            background: rgba(121, 36, 183, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            transition: all 0.25s;
+        }
+
+        .admin-message-row:hover {
+            background: rgba(121, 36, 183, 0.25);
+        }
+
+        .admin-message-text {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .admin-delete-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, rgba(121, 36, 183, 0.5) 0%, rgba(163, 55, 223, 0.5) 100%);
+            color: #FBF9FF;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .admin-delete-btn:hover {
+            background: linear-gradient(135deg, #e53e3e 0%, #fc5a5a 100%);
+            transform: scale(1.05);
+        }
+
+        .admin-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .admin-modal[hidden] {
+            display: none;
+        }
+
+        .admin-modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+        }
+
+        .admin-modal-content {
+            position: relative;
+            background: linear-gradient(145deg, #1a0720 0%, #2a1035 100%);
+            border: 1px solid rgba(220, 134, 254, 0.25);
+            border-radius: 20px;
+            padding: 32px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .admin-modal-title {
+            font-family: "Merriweather", serif;
+            font-size: 22px;
+            color: #FBF9FF;
+            margin-bottom: 24px;
+        }
+
+        .admin-empty {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 24px;
+            text-align: center;
+            background: rgba(121, 36, 183, 0.1);
+            border-radius: 12px;
+        }
+
+        .footerr {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 1905px;
+            margin: 0 auto;
+            padding: 30px 60px 20px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            color: #FBF9FF;
+            background-color: #0C0617;
+        }
+
+        /* Подвал */
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 1905px;
+            margin: 0 auto;
+            padding: 30px 60px 20px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            color: #FBF9FF;
+            background-color: #0C0617;
+        }
+
+        .footer-logo img {
+            width:  200px;
+            margin-left: 40px;
+        }
+
+        .footer-columns {
+            display: flex;
+            flex: 1;
+            justify-content: space-between;
+            gap: 300px;
+            margin-left: 600px;
+        }
+.footer-columnn{
+    width:203px ;
+    height: 63px;
+    padding-left: 250px;
+}
+        .footer-title {
+            font-family: "Merriweather", serif;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        .icons{
+            width: 253px;
+            display: flex;
+            gap: 30px;
+        }
+        .icons img{
+            width: 40px;
+            height: 40px;
+        }
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 20px;
+        }
+
+        .footer-links a {
+            color: #FBF9FF;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #b87cff;
+        }
+        .footer-socials {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-socials img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .section {
+                width: 100%;
+                max-width: 1200px;
+                padding: 40px 30px 30px;
+            }
+
+            nav {
+                padding: 0 30px;
+            }
+
+            .nav-links {
+                gap: 50px;
+            }
+
+            .login-btn {
+                right: 30px;
+                padding: 12px 28px;
+                font-size: 16px;
+            }
+
+            .glav-text {
+                width: 100%;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 250px;
+                font-size: 36px;
+            }
+            
+            .watch-btn {
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 200px;
+            }
+            
+            .reviews-grid,
+            .rating-grid {
+                gap: 24px 40px;
+            }
+            
+            .review-item {
+                width: 100%;
+                max-width: 420px;
+            }
+            
+            .footer-columns {
+                gap: 100px;
+                margin-left: 100px;
+            }
+            
+            .footer-columnn {
+                padding-left: 50px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            nav {
+                flex-wrap: wrap;
+                height: auto;
+                min-height: 111px;
+                padding: 16px 24px;
+            }
+            
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                position: static;
+                transform: none;
+                gap: 32px;
+                margin-top: 12px;
+            }
+            
+            .login-btn {
+                position: absolute;
+                right: 24px;
+            }
+            
+            .main-content.hero {
+                flex-direction: column;
+                padding: 30px 24px;
+                height: auto;
+                min-height: 70vh;
+            }
+            
+            .text-section {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .glav-text {
+                margin-top: 80px;
+                font-size: 32px;
+                text-align: center;
+            }
+            
+            .watch-btn {
+                margin-top: 40px;
+                font-size: 24px;
+                padding: 14px 48px;
+            }
+            
+            .section-title {
+                margin-top: 60px;
+                font-size: 28px;
+            }
+            
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+            
+            .rating-grid {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+            
+            .decor-star--reviews {
+                left: 5%;
+            }
+            
+            .decor-film {
+                right: -40px;
+                width: 180px;
+            }
+            
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 30px 24px 20px;
+            }
+            
+            .footer-logo img {
+                margin-left: 0;
+            }
+            
+            .footer-columns {
+                flex-direction: column;
+                align-items: center;
+                margin-left: 0;
+                gap: 30px;
+            }
+            
+            .footer-columnn {
+                padding-left: 0;
+            }
+        }
+
+        /* Мобильная навигация */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1000;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: #FBF9FF;
+            border-radius: 2px;
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex !important;
+                position: absolute;
+                right: 80px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            
+            nav {
+                padding: 12px 16px;
+                flex-wrap: wrap;
+                height: auto;
+                min-height: 70px;
+                position: relative;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .nav-links {
+                display: none !important;
+                flex-direction: column;
+                gap: 0;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(145deg, #1a0720 0%, #2a1035 100%);
+                padding: 20px 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                z-index: 999;
+                margin: 0;
+            }
+            
+            .nav-links.active {
+                display: flex !important;
+            }
+            
+            .nav-links a {
+                font-size: 16px;
+                padding: 14px 24px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a:hover {
+                background: rgba(121, 36, 183, 0.2);
+            }
+            
+            .login-btn {
+                position: absolute;
+                right: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+                padding: 10px 18px;
+                font-size: 13px;
+                height: 42px;
+                margin-left: 0;
+            }
+            
+            .user-icon {
+                width: 18px;
+                height: 18px;
+            }
+            
+            .main-content.hero {
+                padding: 24px 16px;
+                height: auto;
+                min-height: calc(100vh - 70px);
+            }
+            
+            .glav-text {
+                font-size: 24px;
+                margin-top: 60px;
+                margin-left: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .watch-btn {
+                margin-top: 24px;
+                margin-left: 0;
+                font-size: 18px;
+                padding: 12px 36px;
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .section {
+                padding: 30px 16px 24px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+                margin-top: 40px;
+            }
+            
+            .popular-list {
+                gap: 16px;
+                margin-top: 20px;
+            }
+            
+            .movie-card img {
+                width: 120px;
+            }
+            
+            .review-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .review-poster {
+                width: 100px;
+            }
+            
+            .review-text {
+                font-size: 14px;
+            }
+            
+            .rating-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .rating-poster {
+                width: 100px;
+            }
+            
+            .decor-star {
+                width: 28px;
+            }
+            
+            .decor-film {
+                width: 140px;
+                opacity: 0.4;
+            }
+            
+            .footer-logo img {
+                width: 140px;
+            }
+            
+            .footer-title {
+                font-size: 16px;
+            }
+            
+            .footer-links {
+                align-items: center;
+            }
+            
+            .icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 8px;
+            }
+            
+            .glav-text {
+                font-size: 20px;
+                margin-top: 40px;
+            }
+            
+            .watch-btn {
+                font-size: 16px;
+                padding: 10px 28px;
+            }
+            
+            .movie-card img {
+                width: 100px;
+            }
+            
+            .section-title {
+                font-size: 20px;
+            }
+            
+            .films-page {
+                padding: 24px 16px 40px;
+                width: 100%;
+            }
+            
+            .films-title {
+                font-size: 24px;
+            }
+            
+            .films-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 20px 16px;
+            }
+            
+            .myrating-page {
+                padding: 24px 16px 40px;
+            }
+            
+            .myrating-title {
+                font-size: 24px;
+            }
+            
+            .myrating-movie {
+                width: 120px;
+            }
+            
+            .profil-page {
+                padding: 24px 16px 40px;
+            }
+            
+            .profil-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+            
+            .profil-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .profil-name {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .myrating-page .chat-layout {
+                max-width: 100%;
+            }
+        }
+            
+        @media (max-width: 920px) {
+            .chat-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .chat-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .chat-toolbar-right {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .chat-toolbar-tab {
+                padding: 8px 14px;
+                font-size: 13px;
+            }
+
+            .chat-search-input {
+                padding: 10px 14px;
+            }
+
+            .chat-messages {
+                height: 200px;
+            }
+
+            .films-filters {
+                flex-direction: column;
+            }
+
+            .filter-search-wrapper {
+                width: 100%;
+            }
+
+            .filter-select {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .news-page {
+                padding: 30px 20px 50px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-card {
+                width: 100%;
+                height: 240px;
+            }
+
+            .news-bg {
+                right: -220px;
+                bottom: -160px;
+            }
+        }
+
+        @media (max-width: 1500px) {
+            .news-grid {
+                grid-template-columns: repeat(2, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 1020px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .profile-page {
+                padding: 30px 16px 40px;
+            }
+            
+            .profile-top {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .profile-avatar-block {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .profile-avatar {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .profile-info-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            
+            .profile-actions {
+                margin-right: 0;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .profile-action {
+                flex: 1 1 auto;
+                min-width: 140px;
+                justify-content: center;
+            }
+            
+            .profile-panel-title {
+                font-size: 22px;
+                margin-bottom: 18px;
+            }
+            
+            .profile-favorites-grid {
+                justify-content: center;
+            }
+            
+            .chat-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .chat-users {
+                max-height: 200px;
+                overflow-y: auto;
+            }
+            
+            .chat-search-input {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .profile-avatar {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .profile-actions {
+                flex-direction: column;
+            }
+            
+            .profile-action {
+                width: 100%;
+            }
+            
+            .profile-info-value {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .admin-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .admin-sidebar {
+                position: static;
+            }
+            
+            .admin-nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .admin-nav-item {
+                flex: 1 1 auto;
+                min-width: 140px;
+                text-align: center;
+            }
+            
+            .admin-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .admin-page {
+                padding: 24px 16px 40px;
+            }
+            
+            .admin-content {
+                padding: 20px 16px;
+                border-radius: 16px;
+            }
+            
+            .admin-sidebar {
+                padding: 20px 16px;
+                border-radius: 16px;
+            }
+            
+            .admin-sidebar-title {
+                font-size: 18px;
+                margin-bottom: 16px;
+            }
+            
+            .admin-nav-item {
+                padding: 12px 14px;
+                font-size: 14px;
+                min-width: 120px;
+            }
+            
+            .admin-title {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            
+            .admin-cards {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .admin-card {
+                padding: 20px 16px;
+            }
+            
+            .admin-card-value {
+                font-size: 28px;
+            }
+            
+            .admin-form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-form-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .admin-form-actions {
+                flex-direction: column;
+            }
+            
+            .admin-form-actions .admin-form-btn {
+                width: 100%;
+            }
+            
+            .admin-review-row,
+            .admin-user-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 14px;
+            }
+            
+            .admin-review-row .admin-ban-btn,
+            .admin-user-row .admin-ban-user-btn,
+            .admin-user-row .admin-unban-btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .admin-message-row {
+                flex-wrap: wrap;
+            }
+            
+            .admin-delete-btn {
+                width: 100%;
+                margin-top: 8px;
+            }
+            
+            .admin-hint {
+                font-size: 13px;
+                padding: 10px 12px;
+            }
+            
+            .admin-subtitle {
+                font-size: 15px;
+                margin: 20px 0 12px;
+            }
+            
+            .admin-modal-content {
+                padding: 24px 20px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .admin-nav-item {
+                min-width: 100%;
+                text-align: center;
+            }
+            
+            .admin-card-value {
+                font-size: 24px;
+            }
+            
+            .admin-card-label {
+                font-size: 13px;
+            }
+            
+            .admin-title {
+                font-size: 22px;
+            }
+        }
+
+        /* Улучшенные мобильные стили для всего сайта */
+        @media (max-width: 480px) {
+            .admin-page {
+                padding: 16px 12px 30px;
+            }
+            
+            .admin-content {
+                padding: 16px 12px;
+            }
+            
+            .admin-sidebar {
+                padding: 16px 12px;
+            }
+            
+            .nav-links {
+                gap: 0;
+            }
+            
+            .nav-links a {
+                padding: 16px 20px;
+                font-size: 15px;
+            }
+            
+            .login-btn {
+                right: 70px;
+                padding: 8px 14px;
+                font-size: 12px;
+                height: 38px;
+            }
+            
+            .mobile-menu-btn {
+                right: 65px;
+            }
+        }
+
+        /* Дополнительные исправления для админ-панели */
+        .admin-layout {
+            box-sizing: border-box;
+        }
+
+        .admin-sidebar {
+            box-sizing: border-box;
+            min-height: fit-content;
+        }
+
+        .admin-content {
+            min-height: 400px;
+            box-sizing: border-box;
+        }
+
+        .admin-tab.is-active {
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Исправление для мобильных устройств */
+        @media (max-width: 768px) {
+            .admin-layout {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .admin-sidebar {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .admin-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .admin-nav-item {
+                flex: 1 1 calc(50% - 4px);
+                text-align: center;
+                min-width: 140px;
+            }
+
+            .admin-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-form-btn {
+                width: 100%;
+            }
+        }
